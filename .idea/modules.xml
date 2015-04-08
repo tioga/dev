@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dev.iml" filepath="$PROJECT_DIR$/dev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tioga-dev-common/tioga-dev-common.iml" filepath="$PROJECT_DIR$/tioga-dev-common/tioga-dev-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tioga-dev-domain/tioga-dev-domain.iml" filepath="$PROJECT_DIR$/tioga-dev-domain/tioga-dev-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tioga-dev-jackson/tioga-dev-jackson.iml" filepath="$PROJECT_DIR$/tioga-dev-jackson/tioga-dev-jackson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tioga-dev-testing/tioga-dev-testing.iml" filepath="$PROJECT_DIR$/tioga-dev-testing/tioga-dev-testing.iml" />
+    </modules>
+  </component>
+</project>
