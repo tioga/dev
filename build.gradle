@@ -25,14 +25,14 @@ buildscript {
   }
 }
 
-apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-java.gradle?" + System.currentTimeMillis())
+apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-java.gradle")
 
 subprojects {
 
   group = "org.tiogasolutions.dev"
 
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-reports.gradle?" + System.currentTimeMillis())
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-versions.gradle?" + System.currentTimeMillis())
+  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-reports.gradle")
+  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-versions.gradle")
 
   targetCompatibility = "1.8"
   sourceCompatibility = "1.8"
