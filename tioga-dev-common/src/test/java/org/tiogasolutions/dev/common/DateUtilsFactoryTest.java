@@ -354,16 +354,14 @@ public class DateUtilsFactoryTest {
   }
   private void validate(LocalDateTime value, boolean midnight, boolean calendar) {
     assertNotNull(value);
-    assertEquals(value.getYear(), 2014);
-    assertEquals(value.getMonthValue(), 6);
-    assertEquals(value.getDayOfMonth(), 17);
-    assertEquals(value.getHour(), (midnight ? 0 : 13));
-    assertEquals(value.getMinute(), (midnight ? 0 : 15));
-    assertEquals(value.getSecond(), (midnight ? 0 : 32));
-    assertEquals(value.getNano(), (midnight || calendar ? 0 : 136000000));
+    assertEquals(value.getYear(), 2014, "Year");
+    assertEquals(value.getMonthValue(), 6, "Month of Year");
+    assertEquals(value.getDayOfMonth(), 17, "Day of Month");
+    assertEquals(value.getHour(), (midnight ? 0 : 13), "Hour of Day");
+    assertEquals(value.getMinute(), (midnight ? 0 : 15), "Minute of Hour");
+    assertEquals(value.getSecond(), (midnight ? 0 : 32), "Second of Minute");
+    assertEquals(value.getNano(), (midnight || calendar ? 0 : 136000000), "Nano of Second");
   }
-
-
 
   public void toDateTime_Object() {
     assertEquals(factory.toZonedDateTime((Object) null), null);
