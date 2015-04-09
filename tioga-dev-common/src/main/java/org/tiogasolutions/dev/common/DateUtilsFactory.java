@@ -6,27 +6,27 @@ import java.time.format.DateTimeFormatter;
 
 public class DateUtilsFactory {
 
-  private final ZoneId defaultTimeZone;
+  private final ZoneId zoneId;
 
-  public DateUtilsFactory(ZoneId defaultTimeZone) {
-    this.defaultTimeZone = (defaultTimeZone != null) ? defaultTimeZone : ZoneId.systemDefault();
+  public DateUtilsFactory(ZoneId zoneId) {
+    this.zoneId = (zoneId != null) ? zoneId : ZoneId.systemDefault();
   }
 
-  public ZoneId getDefaultTimeZone() {
-    return defaultTimeZone;
+  public ZoneId getZoneId() {
+    return zoneId;
   }
 
   public LocalTime currentLocalTime() {
-    return LocalTime.now(defaultTimeZone);
+    return LocalTime.now(zoneId);
   }
   public LocalDate currentLocalDate() {
-    return LocalDate.now(defaultTimeZone);
+    return LocalDate.now(zoneId);
   }
   public LocalDateTime currentLocalDateTime() {
-    return LocalDateTime.now(defaultTimeZone);
+    return LocalDateTime.now(zoneId);
   }
   public ZonedDateTime currentZonedDateTime() {
-    return ZonedDateTime.now(defaultTimeZone);
+    return ZonedDateTime.now(zoneId);
   }
 
   public LocalDate toLocalDate(Object date) {
@@ -80,7 +80,7 @@ public class DateUtilsFactory {
 
     } else if (date > 0) {
       Instant instant = Instant.ofEpochMilli(date);
-      return LocalDate.from(instant.atZone(defaultTimeZone));
+      return LocalDate.from(instant.atZone(zoneId));
 
     } else {
       throw new IllegalArgumentException("The value \"date\" must be greater than or equal to zero.");
@@ -91,21 +91,16 @@ public class DateUtilsFactory {
       return null;
     }
 
-    // noinspection deprecation
-    return LocalDate.of(
-        date.getYear() + 1900,
-        date.getMonth() + 1,
-        date.getDate()
-    );
+    return LocalDateTime.ofInstant(date.toInstant(), zoneId).toLocalDate();
   }
   public LocalDate toLocalDate(Calendar date) {
     if (StringUtils.isBlank(date)) {
       return null;
     }
     return LocalDate.of(
-        date.get(Calendar.YEAR),
-        date.get(Calendar.MONTH) + 1,
-        date.get(Calendar.DAY_OF_MONTH));
+      date.get(Calendar.YEAR),
+      date.get(Calendar.MONTH) + 1,
+      date.get(Calendar.DAY_OF_MONTH));
   }
   public LocalDate toLocalDate(LocalDateTime date) {
     if (StringUtils.isBlank(date)) {
@@ -179,7 +174,7 @@ public class DateUtilsFactory {
 
     } else if (date > 0) {
       Instant instant = Instant.ofEpochMilli(date);
-      return LocalTime.from(instant.atZone(defaultTimeZone));
+      return LocalTime.from(instant.atZone(zoneId));
 
     } else {
       throw new IllegalArgumentException("The value \"date\" must be greater than or equal to zero.");
@@ -196,10 +191,10 @@ public class DateUtilsFactory {
       return null;
     }
     return LocalTime.of(
-        date.get(Calendar.HOUR_OF_DAY),
-        date.get(Calendar.MINUTE),
-        date.get(Calendar.SECOND),
-        date.get(Calendar.MILLISECOND) * 1000 * 1000);
+      date.get(Calendar.HOUR_OF_DAY),
+      date.get(Calendar.MINUTE),
+      date.get(Calendar.SECOND),
+      date.get(Calendar.MILLISECOND) * 1000 * 1000);
   }
   public LocalTime toLocalTime(LocalDateTime date) {
     if (date == null) {
@@ -213,9 +208,11 @@ public class DateUtilsFactory {
     }
     return date.toLocalTime();
   }
-  // TODO - depricate this method and replace with toLocalTime(H,M,S) toLocalTimeWithNano() and toLocalTimeWithMills()
-  public LocalTime toLocalTime(int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
-    return LocalTime.of(hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond*1000*1000);
+  public LocalTime toLocalTimeWithMills(int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
+    return LocalTime.of(hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond * 1000 * 1000);
+  }
+  public LocalTime toLocalTimeWithNanos(int hourOfDay, int minuteOfHour, int secondOfMinute, int nanoOfSecond) {
+    return LocalTime.of(hourOfDay, minuteOfHour, secondOfMinute, nanoOfSecond);
   }
 
 
@@ -277,7 +274,7 @@ public class DateUtilsFactory {
 
     } else if (date > 0) {
       Instant instant = Instant.ofEpochMilli(date);
-      return LocalDateTime.from(instant.atZone(defaultTimeZone));
+      return LocalDateTime.from(instant.atZone(zoneId));
 
     } else {
       throw new IllegalArgumentException("The value \"date\" must be greater than or equal to zero.");
@@ -287,20 +284,20 @@ public class DateUtilsFactory {
     if (date == null) {
       return null;
     }
-    return LocalDateTime.ofInstant(date.toInstant(), defaultTimeZone);
+    return LocalDateTime.ofInstant(date.toInstant(), zoneId);
   }
   public LocalDateTime toLocalDateTime(Calendar date) {
     if (date == null) {
       return null;
     }
     return LocalDateTime.of(
-        date.get(Calendar.YEAR),
-        date.get(Calendar.MONTH) + 1,
-        date.get(Calendar.DAY_OF_MONTH),
-        date.get(Calendar.HOUR_OF_DAY),
-        date.get(Calendar.MINUTE),
-        date.get(Calendar.SECOND),
-        date.get(Calendar.MILLISECOND) * 1000 * 1000);
+      date.get(Calendar.YEAR),
+      date.get(Calendar.MONTH) + 1,
+      date.get(Calendar.DAY_OF_MONTH),
+      date.get(Calendar.HOUR_OF_DAY),
+      date.get(Calendar.MINUTE),
+      date.get(Calendar.SECOND),
+      date.get(Calendar.MILLISECOND) * 1000 * 1000);
   }
   public LocalDateTime toLocalDateTime(LocalDate date) {
     if (date == null) {
@@ -314,16 +311,13 @@ public class DateUtilsFactory {
     }
     return date.toLocalDateTime();
   }
-  // TODO - depricate this method and replace with toLocalDateTime(Y,M,D,H,M,S), toLocalDateTimeWithNano() and toLocalDateTimeWithMills()
-  public LocalDateTime toLocalDateTime(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
-    return LocalDateTime.of(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond*1000*1000);
+  public LocalDateTime toLocalDateTimeWithMills(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
+    return LocalDateTime.of(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond * 1000 * 1000);
+  }
+  public LocalDateTime toLocalDateTimeWithNanos(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int nanoOfSecond) {
+    return LocalDateTime.of(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, nanoOfSecond);
   }
 
-
-  @Deprecated
-  public ZonedDateTime toDateTime(Object date) {
-    return toZonedDateTime(date);
-  }
 
   public ZonedDateTime toZonedDateTime(Object date) {
 
@@ -379,12 +373,12 @@ public class DateUtilsFactory {
 
       } else {
         LocalDateTime localDateTime = LocalDateTime.parse(date, getFormatter(date));
-        return ZonedDateTime.of(localDateTime, defaultTimeZone);
+        return ZonedDateTime.of(localDateTime, zoneId);
       }
 
     } else {
       LocalDate localDate = LocalDate.parse(date, getFormatter(date));
-      return ZonedDateTime.of(localDate, LocalTime.MIDNIGHT, defaultTimeZone);
+      return ZonedDateTime.of(localDate, LocalTime.MIDNIGHT, zoneId);
 
     }
   }
@@ -420,7 +414,7 @@ public class DateUtilsFactory {
 
     } else if (date > 0) {
       Instant instant = Instant.ofEpochMilli(date);
-      return ZonedDateTime.from(instant.atZone(defaultTimeZone));
+      return ZonedDateTime.from(instant.atZone(zoneId));
 
     } else {
       throw new IllegalArgumentException("The value \"date\" must be greater than or equal to zero.");
@@ -435,7 +429,7 @@ public class DateUtilsFactory {
     if (date == null) {
       return null;
     }
-    return ZonedDateTime.of(date, LocalTime.MIDNIGHT, defaultTimeZone);
+    return ZonedDateTime.of(date, LocalTime.MIDNIGHT, zoneId);
   }
 
   @Deprecated
@@ -446,7 +440,7 @@ public class DateUtilsFactory {
     if (date == null) {
       return null;
     }
-    return ZonedDateTime.of(date, defaultTimeZone);
+    return ZonedDateTime.of(date, zoneId);
   }
 
   @Deprecated
@@ -457,7 +451,7 @@ public class DateUtilsFactory {
     if (date == null) {
       return null;
     }
-    return ZonedDateTime.ofInstant(date.toInstant(), defaultTimeZone);
+    return ZonedDateTime.ofInstant(date.toInstant(), zoneId);
   }
 
   @Deprecated
@@ -476,14 +470,14 @@ public class DateUtilsFactory {
         date.get(Calendar.MINUTE),
         date.get(Calendar.SECOND),
         date.get(Calendar.MILLISECOND) * 1000 * 1000,
-        defaultTimeZone);
+      zoneId);
   }
 
   public ZonedDateTime toZonedDateTimeWithMills(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
-    return ZonedDateTime.of(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond*1000*1000, defaultTimeZone);
+    return ZonedDateTime.of(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond*1000*1000, zoneId);
   }
   public ZonedDateTime toZonedDateTimeWithNanos(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int nanoOfSecond) {
-    return ZonedDateTime.of(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, nanoOfSecond, defaultTimeZone);
+    return ZonedDateTime.of(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, nanoOfSecond, zoneId);
   }
 
   public java.util.Date toUtilDate(long date) {
@@ -531,8 +525,7 @@ public class DateUtilsFactory {
   }
 
   public Date toUtilDate(int year, int month, int day) {
-    // noinspection deprecation
-    return new java.util.Date(year-1900, month-1, day);
+    return toUtilDate(ZonedDateTime.of(year, month, day, 0, 0, 0, 0, zoneId));
   }
 
   private static String sanitize(String date) {

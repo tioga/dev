@@ -1,9 +1,14 @@
 package org.tiogasolutions.dev.common;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.time.*;
 import java.util.*;
 
 public class DateUtils {
+
+  private static final Object LOCK = new Object();
 
   public static final ZoneId PDT = ZoneId.of("America/Los_Angeles");
 
@@ -82,18 +87,18 @@ public class DateUtils {
   public static java.util.Date toUtilDate(Date date) {
     return factory.toUtilDate(date);
   }
-  public static java.util.Date toUtilDate(Calendar date) {
-    return factory.toUtilDate(date);
-  }
+//  public static java.util.Date toUtilDate(Calendar date) {
+//    return factory.toUtilDate(date);
+//  }
   public static java.util.Date toUtilDate(LocalDate date) {
     return factory.toUtilDate(date);
   }
   public static java.util.Date toUtilDate(LocalDateTime date) {
     return factory.toUtilDate(date);
   }
-  public static java.util.Date toUtilDate(ZonedDateTime date) {
-    return factory.toUtilDate(date);
-  }
+//  public static java.util.Date toUtilDate(ZonedDateTime date) {
+//    return factory.toUtilDate(date);
+//  }
   public static java.util.Date toUtilDate(int year, int month, int day) {
     return factory.toUtilDate(year, month, day);
   }
@@ -122,13 +127,16 @@ public class DateUtils {
     return factory.toLocalTime(date);
   }
   public static LocalTime toLocalTime(int hourOfDay, int minuteOfHour) {
-    return factory.toLocalTime(hourOfDay, minuteOfHour, 0, 0);
+    return factory.toLocalTimeWithMills(hourOfDay, minuteOfHour, 0, 0);
   }
   public static LocalTime toLocalTime(int hourOfDay, int minuteOfHour, int secondOfMinute) {
-    return factory.toLocalTime(hourOfDay, minuteOfHour, secondOfMinute, 0);
+    return factory.toLocalTimeWithMills(hourOfDay, minuteOfHour, secondOfMinute, 0);
   }
-  public static LocalTime toLocalTime(int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
-    return factory.toLocalTime(hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+  public static LocalTime toLocalTimeWithMills(int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
+    return factory.toLocalTimeWithMills(hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+  }
+  public static LocalTime toLocalTimeWithNanos(int hourOfDay, int minuteOfHour, int secondOfMinute, int nanoOfSecond) {
+    return factory.toLocalTimeWithNanos(hourOfDay, minuteOfHour, secondOfMinute, nanoOfSecond);
   }
 
 
@@ -155,16 +163,19 @@ public class DateUtils {
     return factory.toLocalDateTime(date);
   }
   public static LocalDateTime toLocalDateTime(int year, int monthOfYear, int dayOfMonth) {
-    return factory.toLocalDateTime(year, monthOfYear, dayOfMonth, 0, 0, 0, 0);
+    return factory.toLocalDateTimeWithMills(year, monthOfYear, dayOfMonth, 0, 0, 0, 0);
   }
   public static LocalDateTime toLocalDateTime(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour) {
-    return factory.toLocalDateTime(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, 0, 0);
+    return factory.toLocalDateTimeWithMills(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, 0, 0);
   }
   public static LocalDateTime toLocalDateTime(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute) {
-    return factory.toLocalDateTime(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, 0);
+    return factory.toLocalDateTimeWithMills(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, 0);
   }
-  public static LocalDateTime toLocalDateTime(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
-    return factory.toLocalDateTime(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+  public static LocalDateTime toLocalDateTimeWithMills(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
+    return factory.toLocalDateTimeWithMills(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+  }
+  public static LocalDateTime toLocalDateTimeWithNanos(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int nanosOfSecond) {
+    return factory.toLocalDateTimeWithNanos(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, nanosOfSecond);
   }
 
 
@@ -252,8 +263,8 @@ public class DateUtils {
   public static ZonedDateTime toZonedDateTimeWithMills(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
     return factory.toZonedDateTimeWithMills(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
   }
-  public static ZonedDateTime toZonedDateTimeWithNanos(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int millisOfSecond) {
-    return factory.toZonedDateTimeWithNanos(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+  public static ZonedDateTime toZonedDateTimeWithNanos(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minuteOfHour, int secondOfMinute, int nanosOfSecond) {
+    return factory.toZonedDateTimeWithNanos(year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, nanosOfSecond);
   }
 
   public static boolean datesEqual(Date dateA, Date dateB) {
@@ -312,4 +323,30 @@ public class DateUtils {
   public static ZonedDateTime toFirstDate(ZonedDateTime date) {
     return factory.toFirstDate(date);
   }
+
+//  public static java.util.Date setTimeZone(java.util.Date date, ZoneId zoneId) {
+//    TimeZone timeZone = TimeZone.getTimeZone(zoneId);
+//    return setTimeZone(date, timeZone);
+//  }
+//  public static java.util.Date setTimeZone(java.util.Date date, TimeZone timeZone) {
+//    synchronized (LOCK) {
+//      TimeZone originalTimeZone = TimeZone.getDefault();
+//      try {
+//        TimeZone.setDefault(timeZone);
+//
+//        date.setTime(date.getTime());
+//
+//        Method method = java.util.Date.class.getDeclaredMethod("normalize");
+//        method.setAccessible(true);
+//        method.invoke(date);
+//
+//        return date;
+//
+//      } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+//        throw new RuntimeException("Exception normalizing java.util.Date", e);
+//      } finally {
+//        TimeZone.setDefault(originalTimeZone);
+//      }
+//    }
+//  }
 }
