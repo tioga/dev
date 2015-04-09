@@ -12,6 +12,10 @@ public class DateUtilsFactory {
     this.defaultTimeZone = (defaultTimeZone != null) ? defaultTimeZone : ZoneId.systemDefault();
   }
 
+  public ZoneId getDefaultTimeZone() {
+    return defaultTimeZone;
+  }
+
   public LocalTime currentLocalTime() {
     return LocalTime.now(defaultTimeZone);
   }
