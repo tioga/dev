@@ -15,19 +15,17 @@
  */
 
 project(':tioga-dev-jackson') {
-  version = "4.1.7"
+  version = "4.1.8"
 
   dependencies {
     compile(project(":tioga-dev-common"))
     compile(project(":tioga-dev-domain"))
 
-    compile("com.fasterxml.jackson.core:jackson-databind:2.5.1")
-    // jackson-databind erroneously depends on 2.5.0
-    compile("com.fasterxml.jackson.core:jackson-annotations:2.5.1") {force = true}
+    compile("com.fasterxml.jackson.core:jackson-databind:2.5.2")
 
     testCompile(project(":tioga-dev-testing"))
     testCompile("org.testng:testng:6.8.21")
   }
 
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle")
+  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
 }
