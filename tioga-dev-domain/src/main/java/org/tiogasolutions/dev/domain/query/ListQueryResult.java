@@ -169,7 +169,7 @@ public final class ListQueryResult<T> implements QueryResult<T> {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    ListQueryResult that = (ListQueryResult) o;
+    ListQueryResult<T> that = (ListQueryResult)o;
 
     if (limit != that.limit) return false;
     if (offset != that.offset) return false;

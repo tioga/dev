@@ -21,7 +21,8 @@ project(':tioga-dev-jackson') {
     compile(project(":tioga-dev-common"))
     compile(project(":tioga-dev-domain"))
 
-    compile("com.fasterxml.jackson.core:jackson-databind:2.5.0")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.5.1")
+    // compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.2")
 
     testCompile(project(":tioga-dev-testing"))
     testCompile("org.testng:testng:6.8.21")
