@@ -82,48 +82,48 @@ public abstract class ApiException extends FineRuntimeException {
   /////////////////////////////////////
 
   // Status 400
-  public static ApiException badRequest() {                                              return new ApiBadRequestException(); }
-  public static ApiException badRequest(String message, String...traits) {               return new ApiBadRequestException(message, traits); }
-  public static ApiException badRequest(Throwable ex, String...traits) {                 return new ApiBadRequestException(ex, traits); }
-  public static ApiException badRequest(String message, Throwable ex, String...traits) { return new ApiBadRequestException(message, ex, traits); }
-  public static ApiException badRequest(FineMessage richMessage) {                       return new ApiBadRequestException(richMessage); }
-  public static ApiException badRequest(FineMessage richMessage, Throwable ex) {         return new ApiBadRequestException(richMessage, ex); }
-  public static ApiException badRequest(FineMessageSet messageSet) {                     return new ApiBadRequestException(messageSet); }
-  public static ApiException badRequest(FineMessageSet messageSet, Throwable ex) {       return new ApiBadRequestException(messageSet, ex); }
+  public static ApiBadRequestException badRequest() {                                              return new ApiBadRequestException(); }
+  public static ApiBadRequestException badRequest(String message, String...traits) {               return new ApiBadRequestException(message, traits); }
+  public static ApiBadRequestException badRequest(Throwable ex, String...traits) {                 return new ApiBadRequestException(ex, traits); }
+  public static ApiBadRequestException badRequest(String message, Throwable ex, String...traits) { return new ApiBadRequestException(message, ex, traits); }
+  public static ApiBadRequestException badRequest(FineMessage richMessage) {                       return new ApiBadRequestException(richMessage); }
+  public static ApiBadRequestException badRequest(FineMessage richMessage, Throwable ex) {         return new ApiBadRequestException(richMessage, ex); }
+  public static ApiBadRequestException badRequest(FineMessageSet messageSet) {                     return new ApiBadRequestException(messageSet); }
+  public static ApiBadRequestException badRequest(FineMessageSet messageSet, Throwable ex) {       return new ApiBadRequestException(messageSet, ex); }
 
 
   // Status 401
-  public static ApiException unauthorized() {                                              return new ApiUnauthorizedException(); }
-  public static ApiException unauthorized(String message, String...traits) {               return new ApiUnauthorizedException(message, traits); }
-  public static ApiException unauthorized(Throwable ex, String...traits) {                 return new ApiUnauthorizedException(ex, traits); }
-  public static ApiException unauthorized(String message, Throwable ex, String...traits) { return new ApiUnauthorizedException(message, ex, traits); }
-  public static ApiException unauthorized(FineMessage richMessage) {                       return new ApiUnauthorizedException(richMessage); }
-  public static ApiException unauthorized(FineMessage richMessage, Throwable ex) {         return new ApiUnauthorizedException(richMessage, ex); }
-  public static ApiException unauthorized(FineMessageSet messageSet) {                     return new ApiUnauthorizedException(messageSet); }
-  public static ApiException unauthorized(FineMessageSet messageSet, Throwable ex) {       return new ApiUnauthorizedException(messageSet, ex); }
+  public static ApiUnauthorizedException unauthorized() {                                              return new ApiUnauthorizedException(); }
+  public static ApiUnauthorizedException unauthorized(String message, String...traits) {               return new ApiUnauthorizedException(message, traits); }
+  public static ApiUnauthorizedException unauthorized(Throwable ex, String...traits) {                 return new ApiUnauthorizedException(ex, traits); }
+  public static ApiUnauthorizedException unauthorized(String message, Throwable ex, String...traits) { return new ApiUnauthorizedException(message, ex, traits); }
+  public static ApiUnauthorizedException unauthorized(FineMessage richMessage) {                       return new ApiUnauthorizedException(richMessage); }
+  public static ApiUnauthorizedException unauthorized(FineMessage richMessage, Throwable ex) {         return new ApiUnauthorizedException(richMessage, ex); }
+  public static ApiUnauthorizedException unauthorized(FineMessageSet messageSet) {                     return new ApiUnauthorizedException(messageSet); }
+  public static ApiUnauthorizedException unauthorized(FineMessageSet messageSet, Throwable ex) {       return new ApiUnauthorizedException(messageSet, ex); }
 
   // Status 402 - payment required
 
   // Status 403
-  public static ApiException forbidden() {                                              return new ApiForbiddenException(); }
-  public static ApiException forbidden(String message, String...traits) {               return new ApiForbiddenException(message, traits); }
-  public static ApiException forbidden(Throwable ex, String...traits) {                 return new ApiForbiddenException(ex, traits); }
-  public static ApiException forbidden(String message, Throwable ex, String...traits) { return new ApiForbiddenException(message, ex, traits); }
-  public static ApiException forbidden(FineMessage richMessage) {                       return new ApiForbiddenException(richMessage); }
-  public static ApiException forbidden(FineMessage richMessage, Throwable ex) {         return new ApiForbiddenException(richMessage, ex); }
-  public static ApiException forbidden(FineMessageSet messageSet) {                     return new ApiForbiddenException(messageSet); }
-  public static ApiException forbidden(FineMessageSet messageSet, Throwable ex) {       return new ApiForbiddenException(messageSet, ex); }
+  public static ApiForbiddenException forbidden() {                                              return new ApiForbiddenException(); }
+  public static ApiForbiddenException forbidden(String message, String...traits) {               return new ApiForbiddenException(message, traits); }
+  public static ApiForbiddenException forbidden(Throwable ex, String...traits) {                 return new ApiForbiddenException(ex, traits); }
+  public static ApiForbiddenException forbidden(String message, Throwable ex, String...traits) { return new ApiForbiddenException(message, ex, traits); }
+  public static ApiForbiddenException forbidden(FineMessage richMessage) {                       return new ApiForbiddenException(richMessage); }
+  public static ApiForbiddenException forbidden(FineMessage richMessage, Throwable ex) {         return new ApiForbiddenException(richMessage, ex); }
+  public static ApiForbiddenException forbidden(FineMessageSet messageSet) {                     return new ApiForbiddenException(messageSet); }
+  public static ApiForbiddenException forbidden(FineMessageSet messageSet, Throwable ex) {       return new ApiForbiddenException(messageSet, ex); }
 
 
   // Status 404
-  public static ApiException notFound() {                                              return new ApiNotFoundException(); }
-  public static ApiException notFound(String message, String...traits) {               return new ApiNotFoundException(message, traits); }
-  public static ApiException notFound(Throwable ex, String...traits) {                 return new ApiNotFoundException(ex, traits); }
-  public static ApiException notFound(String message, Throwable ex, String...traits) { return new ApiNotFoundException(message, ex, traits); }
-  public static ApiException notFound(FineMessage richMessage) {                       return new ApiNotFoundException(richMessage); }
-  public static ApiException notFound(FineMessage richMessage, Throwable ex) {         return new ApiNotFoundException(richMessage, ex); }
-  public static ApiException notFound(FineMessageSet messageSet) {                     return new ApiNotFoundException(messageSet); }
-  public static ApiException notFound(FineMessageSet messageSet, Throwable ex) {       return new ApiNotFoundException(messageSet, ex); }
+  public static ApiNotFoundException notFound() {                                              return new ApiNotFoundException(); }
+  public static ApiNotFoundException notFound(String message, String...traits) {               return new ApiNotFoundException(message, traits); }
+  public static ApiNotFoundException notFound(Throwable ex, String...traits) {                 return new ApiNotFoundException(ex, traits); }
+  public static ApiNotFoundException notFound(String message, Throwable ex, String...traits) { return new ApiNotFoundException(message, ex, traits); }
+  public static ApiNotFoundException notFound(FineMessage richMessage) {                       return new ApiNotFoundException(richMessage); }
+  public static ApiNotFoundException notFound(FineMessage richMessage, Throwable ex) {         return new ApiNotFoundException(richMessage, ex); }
+  public static ApiNotFoundException notFound(FineMessageSet messageSet) {                     return new ApiNotFoundException(messageSet); }
+  public static ApiNotFoundException notFound(FineMessageSet messageSet, Throwable ex) {       return new ApiNotFoundException(messageSet, ex); }
 
   // Status 405 - method not allowed
   // Status 406 - not acceptable
@@ -131,27 +131,27 @@ public abstract class ApiException extends FineRuntimeException {
   // Status 408 - request timeout
 
   // Status 409
-  public static ApiException conflict() {                                              return new ApiConflictException(); }
-  public static ApiException conflict(String message, String...traits) {               return new ApiConflictException(message, traits); }
-  public static ApiException conflict(Throwable ex, String...traits) {                 return new ApiConflictException(ex, traits); }
-  public static ApiException conflict(String message, Throwable ex, String...traits) { return new ApiConflictException(message, ex, traits); }
-  public static ApiException conflict(FineMessage richMessage) {                       return new ApiConflictException(richMessage); }
-  public static ApiException conflict(FineMessage richMessage, Throwable ex) {         return new ApiConflictException(richMessage, ex); }
-  public static ApiException conflict(FineMessageSet messageSet) {                     return new ApiConflictException(messageSet); }
-  public static ApiException conflict(FineMessageSet messageSet, Throwable ex) {       return new ApiConflictException(messageSet, ex); }
+  public static ApiConflictException conflict() {                                              return new ApiConflictException(); }
+  public static ApiConflictException conflict(String message, String...traits) {               return new ApiConflictException(message, traits); }
+  public static ApiConflictException conflict(Throwable ex, String...traits) {                 return new ApiConflictException(ex, traits); }
+  public static ApiConflictException conflict(String message, Throwable ex, String...traits) { return new ApiConflictException(message, ex, traits); }
+  public static ApiConflictException conflict(FineMessage richMessage) {                       return new ApiConflictException(richMessage); }
+  public static ApiConflictException conflict(FineMessage richMessage, Throwable ex) {         return new ApiConflictException(richMessage, ex); }
+  public static ApiConflictException conflict(FineMessageSet messageSet) {                     return new ApiConflictException(messageSet); }
+  public static ApiConflictException conflict(FineMessageSet messageSet, Throwable ex) {       return new ApiConflictException(messageSet, ex); }
 
   // Status 410 - gone
   // Status 411 - length required
 
   // Status 412
-  public static ApiException preconditionFailed() {                                              return new ApiPreconditionFailedException(); }
-  public static ApiException preconditionFailed(String message, String...traits) {               return new ApiPreconditionFailedException(message, traits); }
-  public static ApiException preconditionFailed(Throwable ex, String...traits) {                 return new ApiPreconditionFailedException(ex, traits); }
-  public static ApiException preconditionFailed(String message, Throwable ex, String...traits) { return new ApiPreconditionFailedException(message, ex, traits); }
-  public static ApiException preconditionFailed(FineMessage richMessage) {                       return new ApiPreconditionFailedException(richMessage); }
-  public static ApiException preconditionFailed(FineMessage richMessage, Throwable ex) {         return new ApiPreconditionFailedException(richMessage, ex); }
-  public static ApiException preconditionFailed(FineMessageSet messageSet) {                     return new ApiPreconditionFailedException(messageSet); }
-  public static ApiException preconditionFailed(FineMessageSet messageSet, Throwable ex) {       return new ApiPreconditionFailedException(messageSet, ex); }
+  public static ApiPreconditionFailedException preconditionFailed() {                                              return new ApiPreconditionFailedException(); }
+  public static ApiPreconditionFailedException preconditionFailed(String message, String...traits) {               return new ApiPreconditionFailedException(message, traits); }
+  public static ApiPreconditionFailedException preconditionFailed(Throwable ex, String...traits) {                 return new ApiPreconditionFailedException(ex, traits); }
+  public static ApiPreconditionFailedException preconditionFailed(String message, Throwable ex, String...traits) { return new ApiPreconditionFailedException(message, ex, traits); }
+  public static ApiPreconditionFailedException preconditionFailed(FineMessage richMessage) {                       return new ApiPreconditionFailedException(richMessage); }
+  public static ApiPreconditionFailedException preconditionFailed(FineMessage richMessage, Throwable ex) {         return new ApiPreconditionFailedException(richMessage, ex); }
+  public static ApiPreconditionFailedException preconditionFailed(FineMessageSet messageSet) {                     return new ApiPreconditionFailedException(messageSet); }
+  public static ApiPreconditionFailedException preconditionFailed(FineMessageSet messageSet, Throwable ex) {       return new ApiPreconditionFailedException(messageSet, ex); }
 
   // Status 413 - Request Entity Too Large
   // Status 414 - Request-URI Too Long
@@ -160,14 +160,14 @@ public abstract class ApiException extends FineRuntimeException {
   // Status 417 - Expectation Failed
 
   // Status 418
-  public static ApiException imATeapot() {                                              return new ApiImATeapotException(); }
-  public static ApiException imATeapot(String message, String...traits) {               return new ApiImATeapotException(message, traits); }
-  public static ApiException imATeapot(Throwable ex, String...traits) {                 return new ApiImATeapotException(ex, traits); }
-  public static ApiException imATeapot(String message, Throwable ex, String...traits) { return new ApiImATeapotException(message, ex, traits); }
-  public static ApiException imATeapot(FineMessage richMessage) {                       return new ApiImATeapotException(richMessage); }
-  public static ApiException imATeapot(FineMessage richMessage, Throwable ex) {         return new ApiImATeapotException(richMessage, ex); }
-  public static ApiException imATeapot(FineMessageSet messageSet) {                     return new ApiImATeapotException(messageSet); }
-  public static ApiException imATeapot(FineMessageSet messageSet, Throwable ex) {       return new ApiImATeapotException(messageSet, ex); }
+  public static ApiImATeapotException imATeapot() {                                              return new ApiImATeapotException(); }
+  public static ApiImATeapotException imATeapot(String message, String...traits) {               return new ApiImATeapotException(message, traits); }
+  public static ApiImATeapotException imATeapot(Throwable ex, String...traits) {                 return new ApiImATeapotException(ex, traits); }
+  public static ApiImATeapotException imATeapot(String message, Throwable ex, String...traits) { return new ApiImATeapotException(message, ex, traits); }
+  public static ApiImATeapotException imATeapot(FineMessage richMessage) {                       return new ApiImATeapotException(richMessage); }
+  public static ApiImATeapotException imATeapot(FineMessage richMessage, Throwable ex) {         return new ApiImATeapotException(richMessage, ex); }
+  public static ApiImATeapotException imATeapot(FineMessageSet messageSet) {                     return new ApiImATeapotException(messageSet); }
+  public static ApiImATeapotException imATeapot(FineMessageSet messageSet, Throwable ex) {       return new ApiImATeapotException(messageSet, ex); }
 
   // Status 419 to 4999
 
@@ -176,37 +176,37 @@ public abstract class ApiException extends FineRuntimeException {
   /////////////////////////////////////
 
   // Status 500
-  public static ApiException internalServerError() {                                              return new ApiInternalServerErrorException(); }
-  public static ApiException internalServerError(String message, String...traits) {               return new ApiInternalServerErrorException(message, traits); }
-  public static ApiException internalServerError(Throwable ex, String...traits) {                 return new ApiInternalServerErrorException(ex, traits); }
-  public static ApiException internalServerError(String message, Throwable ex, String...traits) { return new ApiInternalServerErrorException(message, ex, traits); }
-  public static ApiException internalServerError(FineMessage richMessage) {                       return new ApiInternalServerErrorException(richMessage); }
-  public static ApiException internalServerError(FineMessage richMessage, Throwable ex) {         return new ApiInternalServerErrorException(richMessage, ex); }
-  public static ApiException internalServerError(FineMessageSet messageSet) {                     return new ApiInternalServerErrorException(messageSet); }
-  public static ApiException internalServerError(FineMessageSet messageSet, Throwable ex) {       return new ApiInternalServerErrorException(messageSet, ex); }
+  public static ApiInternalServerErrorException internalServerError() {                                              return new ApiInternalServerErrorException(); }
+  public static ApiInternalServerErrorException internalServerError(String message, String...traits) {               return new ApiInternalServerErrorException(message, traits); }
+  public static ApiInternalServerErrorException internalServerError(Throwable ex, String...traits) {                 return new ApiInternalServerErrorException(ex, traits); }
+  public static ApiInternalServerErrorException internalServerError(String message, Throwable ex, String...traits) { return new ApiInternalServerErrorException(message, ex, traits); }
+  public static ApiInternalServerErrorException internalServerError(FineMessage richMessage) {                       return new ApiInternalServerErrorException(richMessage); }
+  public static ApiInternalServerErrorException internalServerError(FineMessage richMessage, Throwable ex) {         return new ApiInternalServerErrorException(richMessage, ex); }
+  public static ApiInternalServerErrorException internalServerError(FineMessageSet messageSet) {                     return new ApiInternalServerErrorException(messageSet); }
+  public static ApiInternalServerErrorException internalServerError(FineMessageSet messageSet, Throwable ex) {       return new ApiInternalServerErrorException(messageSet, ex); }
 
 
   // Status 501
-  public static ApiException notImplemented() {                                              return new ApiNotImplementedException(); }
-  public static ApiException notImplemented(String message, String...traits) {               return new ApiNotImplementedException(message, traits); }
-  public static ApiException notImplemented(Throwable ex, String...traits) {                 return new ApiNotImplementedException(ex, traits); }
-  public static ApiException notImplemented(String message, Throwable ex, String...traits) { return new ApiNotImplementedException(message, ex, traits); }
-  public static ApiException notImplemented(FineMessage richMessage) {                       return new ApiNotImplementedException(richMessage); }
-  public static ApiException notImplemented(FineMessage richMessage, Throwable ex) {         return new ApiNotImplementedException(richMessage, ex); }
-  public static ApiException notImplemented(FineMessageSet messageSet) {                     return new ApiNotImplementedException(messageSet); }
-  public static ApiException notImplemented(FineMessageSet messageSet, Throwable ex) {       return new ApiNotImplementedException(messageSet, ex); }
+  public static ApiNotImplementedException notImplemented() {                                              return new ApiNotImplementedException(); }
+  public static ApiNotImplementedException notImplemented(String message, String...traits) {               return new ApiNotImplementedException(message, traits); }
+  public static ApiNotImplementedException notImplemented(Throwable ex, String...traits) {                 return new ApiNotImplementedException(ex, traits); }
+  public static ApiNotImplementedException notImplemented(String message, Throwable ex, String...traits) { return new ApiNotImplementedException(message, ex, traits); }
+  public static ApiNotImplementedException notImplemented(FineMessage richMessage) {                       return new ApiNotImplementedException(richMessage); }
+  public static ApiNotImplementedException notImplemented(FineMessage richMessage, Throwable ex) {         return new ApiNotImplementedException(richMessage, ex); }
+  public static ApiNotImplementedException notImplemented(FineMessageSet messageSet) {                     return new ApiNotImplementedException(messageSet); }
+  public static ApiNotImplementedException notImplemented(FineMessageSet messageSet, Throwable ex) {       return new ApiNotImplementedException(messageSet, ex); }
 
   // Status 502 - bad gateway
 
   // Status 503
-  public static ApiException serviceUnavailable() {                                              return new ApiServiceUnavailableException(); }
-  public static ApiException serviceUnavailable(String message, String...traits) {               return new ApiServiceUnavailableException(message, traits); }
-  public static ApiException serviceUnavailable(Throwable ex, String...traits) {                 return new ApiServiceUnavailableException(ex, traits); }
-  public static ApiException serviceUnavailable(String message, Throwable ex, String...traits) { return new ApiServiceUnavailableException(message, ex, traits); }
-  public static ApiException serviceUnavailable(FineMessage richMessage) {                       return new ApiServiceUnavailableException(richMessage); }
-  public static ApiException serviceUnavailable(FineMessage richMessage, Throwable ex) {         return new ApiServiceUnavailableException(richMessage, ex); }
-  public static ApiException serviceUnavailable(FineMessageSet messageSet) {                     return new ApiServiceUnavailableException(messageSet); }
-  public static ApiException serviceUnavailable(FineMessageSet messageSet, Throwable ex) {       return new ApiServiceUnavailableException(messageSet, ex); }
+  public static ApiServiceUnavailableException serviceUnavailable() {                                              return new ApiServiceUnavailableException(); }
+  public static ApiServiceUnavailableException serviceUnavailable(String message, String...traits) {               return new ApiServiceUnavailableException(message, traits); }
+  public static ApiServiceUnavailableException serviceUnavailable(Throwable ex, String...traits) {                 return new ApiServiceUnavailableException(ex, traits); }
+  public static ApiServiceUnavailableException serviceUnavailable(String message, Throwable ex, String...traits) { return new ApiServiceUnavailableException(message, ex, traits); }
+  public static ApiServiceUnavailableException serviceUnavailable(FineMessage richMessage) {                       return new ApiServiceUnavailableException(richMessage); }
+  public static ApiServiceUnavailableException serviceUnavailable(FineMessage richMessage, Throwable ex) {         return new ApiServiceUnavailableException(richMessage, ex); }
+  public static ApiServiceUnavailableException serviceUnavailable(FineMessageSet messageSet) {                     return new ApiServiceUnavailableException(messageSet); }
+  public static ApiServiceUnavailableException serviceUnavailable(FineMessageSet messageSet, Throwable ex) {       return new ApiServiceUnavailableException(messageSet, ex); }
 
   // Status 504 to 5999
 
