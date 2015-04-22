@@ -188,6 +188,10 @@ public enum HttpStatusCode {
    */
   EXPECTATION_FAILED(417, "Expectation Failed"),
   /**
+   * {@code 418 I'm a teapot}.
+   */
+  IM_A_TEAPOT(418, "I'm a teapot"),
+  /**
    * {@code 419 Insufficient Space on Resource}.
    */
   INSUFFICIENT_SPACE_ON_RESOURCE(419, "Insufficient Space On Resource"),
@@ -350,5 +354,4 @@ public enum HttpStatusCode {
     }
     return UNDEFINED;
   }
-
 }

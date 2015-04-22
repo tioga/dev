@@ -64,7 +64,7 @@ public class Jsr349BeanValidator implements BeanValidator {
         Set<ConstraintViolation<Object>> violations = validator.validate(object, groups);
         FineMessageSet messageSet = newFineMessageSet(violations);
         if (messageSet.isNotEmpty()) {
-            throw new ApiException(statusCode, messageSet);
+            throw ApiException.fromCode(statusCode, messageSet);
         }
     }
 
