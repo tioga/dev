@@ -43,7 +43,7 @@ public class TraitMap implements Serializable {
     }
 
     SortedMap<String, String> localMap = new TreeMap<>();
-    for (Map.Entry entry : givenMap.entrySet()) {
+    for (Map.Entry<?,?> entry : givenMap.entrySet()) {
 
       if (entry.getKey() == null) {
         continue;

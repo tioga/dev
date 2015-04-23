@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 project(':tioga-dev-common') {
-  version = "5.0.0"
+  version = "5.0.1"
 
   dependencies {
     testCompile ("org.testng:testng:6.8.21")

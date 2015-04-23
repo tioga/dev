@@ -9,6 +9,8 @@ import org.tiogasolutions.dev.domain.query.QueryResult;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+
 import static org.testng.Assert.assertEquals;
 
 @Test
@@ -49,7 +51,7 @@ public class QueryResultTranslatorTest {
 
     LatLng latLongOne = new LatLng("37.3382030", "-119.7085060", "Yosemite", State.CA, Country.US);
     LatLng latLongTwo = new LatLng("39.3382030", "-120.7085060", "Ahwahnee", State.CA, Country.US);
-    QueryResult<LatLng> origQr = ListQueryResult.newComplete(LatLng.class, latLongOne, latLongTwo);
+    QueryResult<LatLng> origQr = ListQueryResult.newComplete(LatLng.class, Arrays.asList(latLongOne, latLongTwo));
     String json = translator.toJson(origQr);
     assertEquals(json, MULTIPLE_COMPLETE_JSON);
 
@@ -61,7 +63,7 @@ public class QueryResultTranslatorTest {
 
   public void multipleIncompleteExact() {
 
-    QueryResult<LatLng> origQr = ListQueryResult.newResult(LatLng.class, 5, 2, 90, true, latLongOne, latLongTwo);
+    QueryResult<LatLng> origQr = ListQueryResult.newResult(LatLng.class, 5, 2, 90, true, Arrays.asList(latLongOne, latLongTwo));
     String json = translator.toJson(origQr);
     assertEquals(json, MULTIPLE_INCOMPLETE_EXACT_JSON);
 

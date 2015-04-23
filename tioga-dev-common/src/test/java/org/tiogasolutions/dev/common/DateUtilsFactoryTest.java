@@ -607,6 +607,7 @@ public class DateUtilsFactoryTest {
     assertEquals(value.get(Calendar.SECOND),        (midnight ? 0 : 32), format("Second of Minute (%s)", value));
     assertEquals(value.get(Calendar.MILLISECOND),   (midnight ? 0 : 136), format("Mills of Second (%s)", value));
   }
+  @SuppressWarnings("deprecation")
   private void validate(Config config, java.util.Date value, boolean midnight) {
     assertNotNull(value);
 

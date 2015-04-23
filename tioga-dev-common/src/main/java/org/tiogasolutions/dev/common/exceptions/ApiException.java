@@ -23,7 +23,7 @@ import org.tiogasolutions.dev.common.net.HttpStatusCode;
 import static org.tiogasolutions.dev.common.net.HttpStatusCode.*;
 
 @SuppressWarnings("unused")
-public abstract class ApiException extends FineRuntimeException {
+public class ApiException extends FineRuntimeException {
 
   private final HttpStatusCode httpStatusCode;
 
@@ -228,7 +228,7 @@ public abstract class ApiException extends FineRuntimeException {
       case NOT_IMPLEMENTED: return notImplemented();
       case SERVICE_UNAVAILABLE: return serviceUnavailable();
       // The 100, 200 & 300 series
-      default: return new ApiException(httpStatusCode) {};
+      default: return new ApiException(httpStatusCode);
     }
   }
   public static ApiException fromCode(int code, String message, String...traits) {
@@ -249,7 +249,7 @@ public abstract class ApiException extends FineRuntimeException {
       case NOT_IMPLEMENTED: return notImplemented(message, traits);
       case SERVICE_UNAVAILABLE: return serviceUnavailable(message, traits);
       // The 100, 200 & 300 series
-      default: return new ApiException(httpStatusCode, message, traits) {};
+      default: return new ApiException(httpStatusCode, message, traits);
     }
   }
   public static ApiException fromCode(int code, Throwable ex, String...traits) {
@@ -270,7 +270,7 @@ public abstract class ApiException extends FineRuntimeException {
       case NOT_IMPLEMENTED: return notImplemented(ex, traits);
       case SERVICE_UNAVAILABLE: return serviceUnavailable(ex, traits);
       // The 100, 200 & 300 series
-      default: return new ApiException(httpStatusCode, ex, traits) {};
+      default: return new ApiException(httpStatusCode, ex, traits);
     }
   }
   public static ApiException fromCode(int code, String message, Throwable ex, String...traits) {
@@ -291,7 +291,7 @@ public abstract class ApiException extends FineRuntimeException {
       case NOT_IMPLEMENTED: return notImplemented(message, ex, traits);
       case SERVICE_UNAVAILABLE: return serviceUnavailable(message, ex, traits);
       // The 100, 200 & 300 series
-      default: return new ApiException(httpStatusCode, message, ex, traits) {};
+      default: return new ApiException(httpStatusCode, message, ex, traits);
     }
   }
   public static ApiException fromCode(int code, FineMessage richMessage) {
@@ -312,7 +312,7 @@ public abstract class ApiException extends FineRuntimeException {
       case NOT_IMPLEMENTED: return notImplemented(richMessage);
       case SERVICE_UNAVAILABLE: return serviceUnavailable(richMessage);
       // The 100, 200 & 300 series
-      default: return new ApiException(httpStatusCode, richMessage) {};
+      default: return new ApiException(httpStatusCode, richMessage);
     }
   }
   public static ApiException fromCode(int code, FineMessage richMessage, Throwable ex) {
@@ -333,7 +333,7 @@ public abstract class ApiException extends FineRuntimeException {
       case NOT_IMPLEMENTED: return notImplemented(richMessage, ex);
       case SERVICE_UNAVAILABLE: return serviceUnavailable(richMessage, ex);
       // The 100, 200 & 300 series
-      default: return new ApiException(httpStatusCode, richMessage, ex) {};
+      default: return new ApiException(httpStatusCode, richMessage, ex);
     }
   }
   public static ApiException fromCode(int code, FineMessageSet messageSet) {
@@ -354,7 +354,7 @@ public abstract class ApiException extends FineRuntimeException {
       case NOT_IMPLEMENTED: return notImplemented();
       case SERVICE_UNAVAILABLE: return serviceUnavailable(messageSet);
       // The 100, 200 & 300 series
-      default: return new ApiException(httpStatusCode, messageSet) {};
+      default: return new ApiException(httpStatusCode, messageSet);
     }
   }
   public static ApiException fromCode(int code, FineMessageSet messageSet, Throwable ex) {
@@ -375,7 +375,7 @@ public abstract class ApiException extends FineRuntimeException {
       case NOT_IMPLEMENTED: return notImplemented(messageSet, ex);
       case SERVICE_UNAVAILABLE: return serviceUnavailable(messageSet, ex);
       // The 100, 200 & 300 series
-      default: return new ApiException(httpStatusCode, messageSet, ex) {};
+      default: return new ApiException(httpStatusCode, messageSet, ex);
     }
   }
   private static HttpStatusCode toHttpStatusCode(int code) {

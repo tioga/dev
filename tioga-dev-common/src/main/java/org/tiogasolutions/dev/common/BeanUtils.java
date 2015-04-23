@@ -26,7 +26,7 @@ public class BeanUtils {
   public static List<String> getValuesFromCollection(Collection objects, String propertyName) {
     try {
       final Object[] args = new Object[0];
-      List<String> retVal = new ArrayList<String>();
+      List<String> retVal = new ArrayList<>();
       for (Object object : objects) {
         if (object == null) {
           retVal.add(null);
@@ -54,13 +54,13 @@ public class BeanUtils {
 
   static public StringBuffer getObjectAsString(Object object, boolean newline) {
     Class type = object.getClass();
-    StringBuffer space = new StringBuffer("     ");
+    final String space = "     ";
     StringBuffer buffer = new StringBuffer();
     buffer.append(type.getName());
     buffer.append(":");
     buffer.append(space);
 
-    HashMap<String, String> map = new HashMap<String, String>();
+    HashMap<String, String> map = new HashMap<>();
 
     while (type != null) {
       java.lang.reflect.Field fields[] = type.getDeclaredFields();
@@ -119,7 +119,7 @@ public class BeanUtils {
 
   @Deprecated
   public static boolean objectsNotEqual(Object valueA, Object valueB) {
-    return objectsEqual(valueA, valueB) == false;
+    return EqualsUtils.objectsNotEqual(valueA, valueB);
   }
 
   /**
@@ -172,7 +172,7 @@ public class BeanUtils {
 
   @SafeVarargs
   public static <T> T[] addToArray(T[] array, T... items) {
-    List<T> list = new ArrayList<T>(Arrays.asList(array));
+    List<T> list = new ArrayList<>(Arrays.asList(array));
     Collections.addAll(list, items);
     Class type = array.getClass().getComponentType();
     // noinspection unchecked
@@ -181,7 +181,7 @@ public class BeanUtils {
 
   @SafeVarargs
   public static <T> T[] removeFromArray(T[] array, T... items) {
-    List<T> list = new ArrayList<T>(Arrays.asList(array));
+    List<T> list = new ArrayList<>(Arrays.asList(array));
     for (T item : items) {
       list.remove(item);
     }
@@ -232,7 +232,7 @@ public class BeanUtils {
   }
 
   public static <T> List<T> union(Collection<T> collectionA, Collection<T> collectionB) {
-    List<T> union = new ArrayList<T>();
+    List<T> union = new ArrayList<>();
 
     union.addAll(collectionA);
     for (T entry : collectionB) {
@@ -245,7 +245,7 @@ public class BeanUtils {
   }
 
   public static <T> List<T> intersection(Collection<T> collectionA, Collection<T> collectionB) {
-    List<T> list = new ArrayList<T>();
+    List<T> list = new ArrayList<>();
 
     for (T object : collectionA) {
       if (collectionB.contains(object)) {

@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ComparisonResults {
 
-  private static enum Type {
+  private enum Type {
     SIZE,
     NOT_EQUAL,
     MISSING_A,
@@ -84,23 +84,21 @@ public class ComparisonResults {
   }
 
   public void ignore(Collection<String> beanNames) {
-    for (String beanName : beanNames) {
-      validationMap.remove(beanName);
-    }
+    beanNames.forEach(validationMap::remove);
   }
 
   public void assertError(String beanName, Type type, Object valueA, Object valueB) throws ComparisonException {
 
     Result result = assertError(beanName, type); // start by validating the basics
 
-    if (BeanUtils.objectsNotEqual(valueA, result.getValueA())) {
+    if (EqualsUtils.objectsNotEqual(valueA, result.getValueA())) {
       String expectedName = ReflectUtils.getName(valueA);
       String actualName = ReflectUtils.getName(result.getValueA());
       String msg = String.format("Value A is not \"%s\" (%s) as expected but rather \"%s\" (%s).", valueA, expectedName, result.getValueA(), actualName);
       throw new ComparisonException(msg);
     }
 
-    if (BeanUtils.objectsNotEqual(valueB, result.getValueB())) {
+    if (EqualsUtils.objectsNotEqual(valueB, result.getValueB())) {
       String expectedName = ReflectUtils.getName(valueB);
       String actualName = ReflectUtils.getName(result.getValueB());
       String msg = String.format("Value B is not \"%s\" (%s) as expected but rather \"%s\" (%s).", valueB, expectedName, result.getValueB(), actualName);

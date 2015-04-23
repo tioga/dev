@@ -65,7 +65,7 @@ public class FineMessage implements Serializable {
     if (traitMap == null) {
       this.traitMap = TraitMap.empty();
     } else {
-      Map map = traitMap.getMap();
+      Map<?,?> map = traitMap.getMap();
       this.traitMap = new TraitMap(map);
     }
   }

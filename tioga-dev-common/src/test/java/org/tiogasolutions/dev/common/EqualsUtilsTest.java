@@ -48,6 +48,22 @@ public class EqualsUtilsTest {
     assertFalse(EqualsUtils.objectsEqual(null, boondoggleB));
   }
 
+  public void testEmpty() {
+    ComparisonResults results = new ComparisonResults(Collections.emptyList());
+    assertTrue(results.isEmpty());
+    assertFalse(results.isNotEmpty());
+    assertTrue(results.toList().isEmpty());
+    assertTrue(results.toMap().isEmpty());
+  }
+
+  public void testNotEmpty() {
+    ComparisonResults results = EqualsUtils.compare(boondoggleA, boondoggleC);
+    assertFalse(results.isEmpty());
+    assertTrue(results.isNotEmpty());
+    assertFalse(results.toList().isEmpty());
+    assertFalse(results.toMap().isEmpty());
+  }
+
   public void testBothNull() {
     ComparisonResults results = EqualsUtils.compare(null, null);
     assertTrue(results.isEmpty());

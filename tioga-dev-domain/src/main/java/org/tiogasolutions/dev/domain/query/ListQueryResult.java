@@ -32,21 +32,21 @@ public final class ListQueryResult<T> implements QueryResult<T> {
   private final List<T> resultList;
 
   public static <T> ListQueryResult<T> newEmpty(Class<T> type) {
-    return new ListQueryResult<T>(type, 0, 0, 0, true, Collections.<T>emptyList());
+    return new ListQueryResult<>(type, 0, 0, 0, true, Collections.<T>emptyList());
   }
 
-  public static <T> ListQueryResult<T> newSingle(Class<T> type, T value) {
-    if (value == null) {
+  public static <T> ListQueryResult<T> newSingle(Class<T> type, T result) {
+    if (result == null) {
       throw new NullPointerException("Null value argument given to newSingle");
     }
-    return new ListQueryResult<>(type, 0, 0, 1, true, Collections.singleton(value));
+    return new ListQueryResult<>(type, 0, 0, 1, true, Collections.singleton(result));
   }
 
   public static <T> ListQueryResult<T> newComplete(Class<T> type, Collection<T> results) {
     return new ListQueryResult<>(type, 0, 0, results.size(), true, results);
   }
 
-  public static <T> ListQueryResult<T> newComplete(Class<T> type, T... results) {
+  public static <T> ListQueryResult<T> newComplete(Class<T> type, T[] results) {
 
     return new ListQueryResult<>(type, 0, 0, results.length, true, Arrays.asList(results));
   }
@@ -65,7 +65,7 @@ public final class ListQueryResult<T> implements QueryResult<T> {
                                                  int offset,
                                                  int totalFound,
                                                  boolean totalExact,
-                                                 T... results) {
+                                                 T[] results) {
     return new ListQueryResult<>(type, limit, offset, totalFound, totalExact, Arrays.asList(results));
   }
 
@@ -169,7 +169,7 @@ public final class ListQueryResult<T> implements QueryResult<T> {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    ListQueryResult<T> that = (ListQueryResult)o;
+    ListQueryResult that = (ListQueryResult)o;
 
     if (limit != that.limit) return false;
     if (offset != that.offset) return false;
