@@ -23,8 +23,8 @@ package org.tiogasolutions.dev.common.json;
  */
 public interface JsonTranslator {
 
-    String toJson(Object domain);
+  String toJson(Object domain);
 
-    <T> T fromJson(Class<T> parametrizedType, String json, Class<?>... parameterTypes);
+  <T> T fromJson(Class<T> parametrizedType, String json, Class<?>... parameterTypes);
 
 }
