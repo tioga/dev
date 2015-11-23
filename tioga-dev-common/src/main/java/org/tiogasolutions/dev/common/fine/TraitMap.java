@@ -24,6 +24,8 @@ import java.util.*;
 
 public class TraitMap implements Serializable {
 
+  private static final long serialVersionUID = 1L;
+
   private static final TraitMap empty = new TraitMap();
   public static TraitMap empty() {
     return empty;

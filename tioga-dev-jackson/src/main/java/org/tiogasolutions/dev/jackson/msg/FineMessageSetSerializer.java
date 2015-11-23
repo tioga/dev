@@ -31,6 +31,8 @@ import java.io.IOException;
 
 public final class FineMessageSetSerializer extends StdSerializer<FineMessageSet> {
 
+  private static final long serialVersionUID = 1L;
+
   public FineMessageSetSerializer() {
       super(FineMessageSet.class);
   }

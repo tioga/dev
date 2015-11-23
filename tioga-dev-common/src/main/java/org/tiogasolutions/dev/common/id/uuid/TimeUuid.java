@@ -51,6 +51,8 @@ import org.omg.CORBA.portable.IDLEntity;
  */
 public class TimeUuid implements Comparable<TimeUuid>, Externalizable, Cloneable, IDLEntity {
 
+    private static final long serialVersionUID = 1L;
+
     public static TimeUuid randomUUID() {
       return new TimeUuid();
     }

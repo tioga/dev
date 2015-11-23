@@ -18,12 +18,13 @@ package org.tiogasolutions.dev.common;
 
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.lang.reflect.Modifier.*;
 
 public class BeanUtils {
 
-  public static List<String> getValuesFromCollection(Collection objects, String propertyName) {
+  public static List<String> getValuesFromCollection(Collection<?> objects, String propertyName) {
     try {
       final Object[] args = new Object[0];
       List<String> retVal = new ArrayList<>();
@@ -53,7 +54,7 @@ public class BeanUtils {
   }
 
   static public StringBuffer getObjectAsString(Object object, boolean newline) {
-    Class type = object.getClass();
+    Class<?> type = object.getClass();
     final String space = "     ";
     StringBuffer buffer = new StringBuffer();
     buffer.append(type.getName());
@@ -147,7 +148,7 @@ public class BeanUtils {
     return EqualsUtils.datesEqual(dateA, dateB);
   }
 
-  public static int compare(Comparable objectA, Comparable objectB) {
+  public static <T> int compare(Comparable<T> objectA, T objectB) {
 
     if (objectA == objectB) {
       return 0;
@@ -172,29 +173,40 @@ public class BeanUtils {
 
   @SafeVarargs
   public static <T> T[] addToArray(T[] array, T... items) {
-    List<T> list = new ArrayList<>(Arrays.asList(array));
-    Collections.addAll(list, items);
-    Class type = array.getClass().getComponentType();
-    // noinspection unchecked
-    return (T[]) ReflectUtils.toArray(type, list);
+    List<T> list = new ArrayList<>(array.length + items.length);
+    Collections.addAll(list, array);
+    // Rewritten to remove warnings about potential heap pollution.
+    // noinspection ManualArrayToCollectionCopy
+    for (T item : items) list.add(item);
+    return list.toArray(array);
   }
 
   @SafeVarargs
   public static <T> T[] removeFromArray(T[] array, T... items) {
-    List<T> list = new ArrayList<>(Arrays.asList(array));
+    List<T> list = new ArrayList<>(array.length);
+    Collections.addAll(list);
     for (T item : items) {
       list.remove(item);
     }
-    Class type = array.getClass().getComponentType();
-    // noinspection unchecked
-    return (T[]) ReflectUtils.toArray(type, list);
+    return list.toArray(array);
   }
 
   @SafeVarargs
   public static <T> T[] replaceInArray(T[] array, T... items) {
-    array = removeFromArray(array, items);
-    array = addToArray(array, items);
-    return array;
+    List<T> list = new ArrayList<>(array.length);
+    Collections.addAll(list);
+
+    // Rewritten to remove warnings about potential heap pollution.
+    for (T item : items) {
+      list.remove(item);
+    }
+
+    // noinspection ManualArrayToCollectionCopy
+    for (T item : items) {
+      list.add(item);
+    }
+
+    return list.toArray(array);
   }
 
   public static LinkedHashMap<String, String> toMap(String... keyValuePairs) {
@@ -244,14 +256,11 @@ public class BeanUtils {
     return union;
   }
 
-  public static <T> List<T> intersection(Collection<T> collectionA, Collection<T> collectionB) {
-    List<T> list = new ArrayList<>();
+  public static <T> List<T> intersection(Collection<? extends T> collectionA, Collection<? extends T> collectionB) {
+    int size = Math.max(collectionA.size(), collectionB.size());
+    List<T> list = new ArrayList<>(size);
 
-    for (T object : collectionA) {
-      if (collectionB.contains(object)) {
-        list.add(object);
-      }
-    }
+    list.addAll(collectionA.stream().filter(collectionB::contains).collect(Collectors.toList()));
 
     return list;
   }

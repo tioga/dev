@@ -7,6 +7,8 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.INTERNAL_SERVER_E
 
 public class ApiServiceUnavailableException extends Api5xxException {
 
+  private static final long serialVersionUID = 1L;
+
   /*default*/ ApiServiceUnavailableException() {
     super(INTERNAL_SERVER_ERROR);
   }

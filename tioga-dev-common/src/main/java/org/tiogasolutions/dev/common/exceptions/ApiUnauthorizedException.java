@@ -7,6 +7,8 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.UNAUTHORIZED;
 
 public class ApiUnauthorizedException extends Api4xxException {
 
+  private static final long serialVersionUID = 1L;
+
   /*default*/ ApiUnauthorizedException() {
     super(UNAUTHORIZED);
   }

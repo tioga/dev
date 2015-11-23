@@ -8,6 +8,8 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.BAD_REQUEST;
 
 public class ApiBadRequestException extends Api4xxException {
 
+  private static final long serialVersionUID = 1L;
+
   /*default*/ ApiBadRequestException() {
     super(BAD_REQUEST);
   }

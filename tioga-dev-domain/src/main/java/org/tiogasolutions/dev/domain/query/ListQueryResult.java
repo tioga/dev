@@ -24,7 +24,7 @@ import java.util.*;
  * Time: 12:18 AM
  */
 public final class ListQueryResult<T> implements QueryResult<T> {
-  private final Class<T> type;
+  private final Class<? extends T> type;
   private final int limit;
   private final int offset;
   private int totalFound;
@@ -51,7 +51,7 @@ public final class ListQueryResult<T> implements QueryResult<T> {
     return new ListQueryResult<>(type, 0, 0, results.length, true, Arrays.asList(results));
   }
 
-  public static <T> ListQueryResult<T> newResult(Class<T> type,
+  public static <T> ListQueryResult<T> newResult(Class<? extends T> type,
                                                  int limit,
                                                  int offset,
                                                  int totalFound,
@@ -69,7 +69,7 @@ public final class ListQueryResult<T> implements QueryResult<T> {
     return new ListQueryResult<>(type, limit, offset, totalFound, totalExact, Arrays.asList(results));
   }
 
-  private ListQueryResult(Class<T> type,
+  private ListQueryResult(Class<? extends T> type,
                           int limit,
                           int offset,
                           int totalFound,
@@ -85,7 +85,7 @@ public final class ListQueryResult<T> implements QueryResult<T> {
   }
 
   @Override
-  public Class<T> getContainsType() {
+  public Class<? extends T> getContainsType() {
     return type;
   }
 
@@ -169,7 +169,7 @@ public final class ListQueryResult<T> implements QueryResult<T> {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    ListQueryResult that = (ListQueryResult)o;
+    ListQueryResult<?> that = (ListQueryResult)o;
 
     if (limit != that.limit) return false;
     if (offset != that.offset) return false;

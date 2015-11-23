@@ -71,7 +71,7 @@ public class TiogaJacksonTranslator implements JsonTranslator {
 
     if (parameterTypes != null && parameterTypes.length > 0) {
       try {
-        JavaType javaType = jacksonMapper.getTypeFactory().constructParametricType(type, parameterTypes);
+        JavaType javaType = jacksonMapper.getTypeFactory().constructParametrizedType(type, type, parameterTypes);
         return jacksonMapper.readValue(json, javaType);
 
       } catch (IOException e) {

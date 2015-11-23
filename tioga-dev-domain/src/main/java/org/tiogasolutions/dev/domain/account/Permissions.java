@@ -5,6 +5,8 @@ import java.util.*;
 
 public class Permissions implements Serializable {
 
+  private static final long serialVersionUID = 1L;
+
   private Set<String> roleTypes = new TreeSet<>();
 
   public Permissions() {

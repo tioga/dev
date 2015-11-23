@@ -7,6 +7,8 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.FORBIDDEN;
 
 public class ApiForbiddenException extends Api4xxException {
 
+  private static final long serialVersionUID = 1L;
+
   /*default*/ ApiForbiddenException() {
     super(FORBIDDEN);
   }

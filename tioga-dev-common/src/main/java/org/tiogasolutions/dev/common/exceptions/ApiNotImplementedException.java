@@ -7,6 +7,8 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.NOT_IMPLEMENTED;
 
 public class ApiNotImplementedException extends Api5xxException {
 
+  private static final long serialVersionUID = 1L;
+
   /*default*/ ApiNotImplementedException() {
     super(NOT_IMPLEMENTED);
   }

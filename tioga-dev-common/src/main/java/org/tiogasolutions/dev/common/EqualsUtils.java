@@ -79,9 +79,9 @@ public class EqualsUtils {
       return builder.add(beanName, valueA, null, ComparisonResults.VALUE_B_IS_NULL);
     }
 
-    if (valueA instanceof Collection && valueB instanceof Collection) {
-      Collection collectionA = (Collection)valueA;
-      Collection collectionB = (Collection)valueB;
+    if (valueA instanceof Collection<?> && valueB instanceof Collection<?>) {
+      Collection<?> collectionA = (Collection<?>)valueA;
+      Collection<?> collectionB = (Collection<?>)valueB;
       return compareCollection(builder, collectionA, collectionB, beanName);
 
     } else if (valueA instanceof Map && valueB instanceof Map) {
@@ -91,15 +91,15 @@ public class EqualsUtils {
       return builder.add(beanName, valueA.getClass(), valueB.getClass(), ComparisonResults.CLASSES_DIFFERENT);
     }
 
-    Class type = valueA.getClass();
+    Class<?> type = valueA.getClass();
 
     if (isSimple(type)) {
       boolean equal = EqualsUtils.objectsEqual(valueA, valueB);
       return (equal) ? builder : builder.add(beanName, valueA, valueB, ComparisonResults.NOT_EQUAL);
 
     } else if (valueA instanceof Object[] && valueB instanceof Object[]) {
-      List collectionA = Arrays.asList((Object[])valueA);
-      List collectionB = Arrays.asList((Object[])valueB);
+      List<?> collectionA = Arrays.asList((Object[])valueA);
+      List<?> collectionB = Arrays.asList((Object[])valueB);
       return compareCollection(builder, collectionA, collectionB, beanName);
     }
 
@@ -116,7 +116,7 @@ public class EqualsUtils {
     return builder;
   }
 
-  private static ComparisonResults.Builder compareMaps(ComparisonResults.Builder builder, Map mapA, Map mapB, String beanName) {
+  private static ComparisonResults.Builder compareMaps(ComparisonResults.Builder builder, Map<?,?> mapA, Map<?,?> mapB, String beanName) {
 
     int countA = mapA.size();
     int countB = mapB.size();
@@ -125,9 +125,9 @@ public class EqualsUtils {
       builder.add(beanName+":count()", countA, countB, ComparisonResults.SIZE);
     }
 
-    Set keysA = mapA.keySet();
-    Set keysB = mapB.keySet();
-    List intersection = BeanUtils.intersection(keysA, keysB);
+    Collection<?> keysA = mapA.keySet();
+    Collection<?> keysB = mapB.keySet();
+    List<?> intersection = BeanUtils.intersection(keysA, keysB);
 
     for (Object key : intersection) {
       Object valueA = mapA.get(key);
@@ -184,9 +184,9 @@ public class EqualsUtils {
    * @param type the class to be evaluated.
    * @return true if the specified type is simple enough to be safely evaluated with it's equals(..) method.
    */
-  private static boolean isSimple(Class type) {
+  private static boolean isSimple(Class<?> type) {
 
-    List<Class> types = Arrays.<Class>asList(
+    List<Class<?>> types = Arrays.<Class<?>>asList(
         Boolean.class,
         Character.class, Byte.class, Short.class,
         Integer.class, Long.class, Float.class, Double.class,

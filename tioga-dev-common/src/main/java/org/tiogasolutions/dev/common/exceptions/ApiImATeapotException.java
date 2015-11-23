@@ -7,6 +7,8 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.IM_A_TEAPOT;
 
 public class ApiImATeapotException extends Api4xxException {
 
+  private static final long serialVersionUID = 1L;
+
   /*default*/ ApiImATeapotException() {
     super(IM_A_TEAPOT);
   }

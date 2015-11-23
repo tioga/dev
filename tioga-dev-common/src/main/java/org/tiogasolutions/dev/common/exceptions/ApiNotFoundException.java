@@ -7,6 +7,8 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.NOT_FOUND;
 
 public class ApiNotFoundException extends Api4xxException {
 
+  private static final long serialVersionUID = 1L;
+
   /*default*/ ApiNotFoundException() {
     super(NOT_FOUND);
   }

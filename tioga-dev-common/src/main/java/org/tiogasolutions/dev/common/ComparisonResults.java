@@ -160,6 +160,7 @@ public class ComparisonResults {
   }
 
   public static class ComparisonException extends Exception {
+    private static final long serialVersionUID = 1L;
     public ComparisonException(String message) {
       super(message);
     }

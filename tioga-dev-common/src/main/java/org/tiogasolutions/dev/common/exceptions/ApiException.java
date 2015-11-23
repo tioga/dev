@@ -25,6 +25,8 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.*;
 @SuppressWarnings("unused")
 public class ApiException extends FineRuntimeException {
 
+  private static final long serialVersionUID = 1L;
+
   private final HttpStatusCode httpStatusCode;
 
   protected ApiException(HttpStatusCode httpStatusCode) {

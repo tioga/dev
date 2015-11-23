@@ -41,6 +41,9 @@ import org.tiogasolutions.dev.common.StringUtils;
  * REVIEW - concurrency
  */
 public class TwoPartIdGenerator implements IdGenerator, Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private static final int MAX_ATTEMPTS = 10000000; // 10 million
 
     private final Object idLock = new Object();

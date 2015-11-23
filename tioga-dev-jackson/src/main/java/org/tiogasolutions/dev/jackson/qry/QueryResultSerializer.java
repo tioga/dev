@@ -29,7 +29,10 @@ import java.io.IOException;
  * Time: 10:36 PM
  */
 
+@SuppressWarnings("rawtypes")
 public final class QueryResultSerializer extends StdSerializer<QueryResult> {
+
+  private static final long serialVersionUID = 1L;
 
   public QueryResultSerializer() {
       super(QueryResult.class);

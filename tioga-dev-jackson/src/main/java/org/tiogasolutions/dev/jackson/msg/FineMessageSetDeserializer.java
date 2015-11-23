@@ -34,6 +34,8 @@ import java.util.Iterator;
  */
 public final class FineMessageSetDeserializer extends StdDeserializer<FineMessageSet> {
 
+  private static final long serialVersionUID = 1L;
+
   public FineMessageSetDeserializer() {
       super(FineMessageSet.class);
   }

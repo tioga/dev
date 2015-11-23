@@ -22,8 +22,9 @@ import com.fasterxml.jackson.databind.ser.std.StdScalarSerializer;
 import java.io.IOException;
 import java.time.*;
 
-public final class ZonedDateTimeSerializer extends StdScalarSerializer<ZonedDateTime>
-{
+public final class ZonedDateTimeSerializer extends StdScalarSerializer<ZonedDateTime> {
+
+    private static final long serialVersionUID = 1L;
 
     public ZonedDateTimeSerializer() {
         super(ZonedDateTime.class);

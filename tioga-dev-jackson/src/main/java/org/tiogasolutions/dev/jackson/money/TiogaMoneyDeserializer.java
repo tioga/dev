@@ -31,6 +31,8 @@ import org.tiogasolutions.dev.domain.money.Money;
  */
 public final class TiogaMoneyDeserializer extends StdScalarDeserializer<Money> {
 
+  private static final long serialVersionUID = 1L;
+
   public TiogaMoneyDeserializer() {
     super(Money.class);
   }

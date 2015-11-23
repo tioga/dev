@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class AccountStatus implements Serializable {
 
+  private static final long serialVersionUID = 1L;
+
   private boolean enabled;
   private boolean credentialsNonExpired;
   private boolean accountNonLocked;

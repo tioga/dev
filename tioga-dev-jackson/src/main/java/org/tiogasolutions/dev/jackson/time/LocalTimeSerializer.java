@@ -22,8 +22,9 @@ import com.fasterxml.jackson.databind.ser.std.StdScalarSerializer;
 import java.io.IOException;
 import java.time.*;
 
-public final class LocalTimeSerializer extends StdScalarSerializer<LocalTime>
-{
+public final class LocalTimeSerializer extends StdScalarSerializer<LocalTime> {
+
+    private static final long serialVersionUID = 1L;
 
     public LocalTimeSerializer() {
         super(LocalTime.class);

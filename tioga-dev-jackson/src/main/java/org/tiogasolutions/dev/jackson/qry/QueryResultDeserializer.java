@@ -33,7 +33,10 @@ import java.util.List;
  * Date: 7/21/12
  * Time: 10:36 PM
  */
+@SuppressWarnings("rawtypes")
 public final class QueryResultDeserializer extends StdDeserializer<QueryResult> {
+
+  private static final long serialVersionUID = 1L;
 
   public QueryResultDeserializer() {
     super(QueryResult.class);
@@ -43,7 +46,7 @@ public final class QueryResultDeserializer extends StdDeserializer<QueryResult> 
   public QueryResult deserialize(JsonParser parser, DeserializationContext context) throws IOException {
 
     String containsTypeName = null;
-    Class containsType = null;
+    Class<?> containsType = null;
     Integer limit = null;
     Integer offset = null;
     Integer totalFound = null;

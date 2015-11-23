@@ -43,17 +43,19 @@ import org.tiogasolutions.dev.jackson.trait.TraitMapSerializer;
 
 public class TiogaJacksonModule extends SimpleModule {
 
+  private static final long serialVersionUID = 1L;
+
   public TiogaJacksonModule() {
 
-    add(Money.class,          new TiogaMoneySerializer(),     new TiogaMoneyDeserializer());
-    add(TraitMap.class,       new TraitMapSerializer(),       new TraitMapDeserializer());
-    add(FineMessageSet.class, new FineMessageSetSerializer(), new FineMessageSetDeserializer());
-    add(QueryResult.class,    new QueryResultSerializer(),    new QueryResultDeserializer());
+    add(Money.class,          new TiogaMoneySerializer(),     Money.class, new TiogaMoneyDeserializer());
+    add(TraitMap.class,       new TraitMapSerializer(),       TraitMap.class, new TraitMapDeserializer());
+    add(FineMessageSet.class, new FineMessageSetSerializer(), FineMessageSet.class, new FineMessageSetDeserializer());
+    add(QueryResult.class,    new QueryResultSerializer(),    QueryResult.class, new QueryResultDeserializer());
 
-    add(LocalDate.class,      new LocalDateSerializer(),      new LocalDateDeserializer());
-    add(LocalTime.class,      new LocalTimeSerializer(),      new LocalTimeDeserializer());
-    add(LocalDateTime.class,  new LocalDateTimeSerializer(),  new LocalDateTimeDeserializer());
-    add(ZonedDateTime.class,  new ZonedDateTimeSerializer(),  new ZonedDateTimeDeserializer());
+    add(LocalDate.class,      new LocalDateSerializer(),      LocalDate.class, new LocalDateDeserializer());
+    add(LocalTime.class,      new LocalTimeSerializer(),      LocalTime.class, new LocalTimeDeserializer());
+    add(LocalDateTime.class,  new LocalDateTimeSerializer(),  LocalDateTime.class, new LocalDateTimeDeserializer());
+    add(ZonedDateTime.class,  new ZonedDateTimeSerializer(),  ZonedDateTime.class, new ZonedDateTimeDeserializer());
 
     setMixInAnnotation(LatLng.class, LatLngMixin.class);
     setMixInAnnotation(FineMessage.class, FineMessageMixin.class);
@@ -75,26 +77,38 @@ public class TiogaJacksonModule extends SimpleModule {
     add("org.joda.time.YearMonth",      "com.fasterxml.jackson.databind.ser.std.ToStringSerializer",       "com.fasterxml.jackson.datatype.joda.deser.YearMonthDeserializer");
   }
 
-  private void add(Class type, JsonSerializer serializer, JsonDeserializer deserializer) {
-    addSerializer(type, serializer);
-    addDeserializer(type, deserializer);
+  private <T> void add(Class<? extends T> serializerType, JsonSerializer<T> serializer, Class<T> deserializerType, JsonDeserializer<? extends T> deserializer) {
+    addSerializer(serializerType, serializer);
+    addDeserializer(deserializerType, deserializer);
   }
 
+  @SuppressWarnings("unchecked")
   private void add(String typeName, String serializerClassName, String deserializerClassName) {
     try {
+      @SuppressWarnings("rawtypes")
       Class type = Class.forName(typeName);
 
+      @SuppressWarnings("rawtypes")
       Class jsonSerializerClass = Class.forName(serializerClassName);
-      JsonSerializer<?> serializer = (JsonSerializer<?>)jsonSerializerClass.newInstance();
-      // noinspection unchecked
+
+      @SuppressWarnings("rawtypes")
+      JsonSerializer serializer = (JsonSerializer)jsonSerializerClass.newInstance();
+
       addSerializer(type, serializer);
 
+      @SuppressWarnings("rawtypes")
       Class jsonDeserializerClass = Class.forName(deserializerClassName);
+
+      @SuppressWarnings("rawtypes")
       JsonDeserializer deserializer;
+
       if (deserializerClassName.equals("com.fasterxml.jackson.datatype.joda.deser.DateTimeDeserializer")) {
+        @SuppressWarnings("rawtypes")
         Class dateTimeType = Class.forName("org.joda.time.DateTime");
-        // noinspection unchecked
+
+        @SuppressWarnings("rawtypes")
         Constructor constructor = jsonDeserializerClass.getConstructor(Class.class);
+
         deserializer = (JsonDeserializer)constructor.newInstance(dateTimeType);
         addDeserializer(type, deserializer);
 

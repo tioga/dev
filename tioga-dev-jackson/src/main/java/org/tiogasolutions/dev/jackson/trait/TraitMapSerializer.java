@@ -31,6 +31,8 @@ import java.io.IOException;
 
 public final class TraitMapSerializer extends StdSerializer<TraitMap> {
 
+  private static final long serialVersionUID = 1L;
+
   public TraitMapSerializer() {
       super(TraitMap.class);
   }

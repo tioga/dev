@@ -19,7 +19,9 @@ package org.tiogasolutions.dev.common.exceptions;
 import static org.tiogasolutions.dev.common.ReflectUtils.getQualifiedMethodName;
 
 public class UnsupportedMethodException extends RuntimeException {
-  
+
+  private static final long serialVersionUID = 1L;
+
   public UnsupportedMethodException() {
     super(getQualifiedMethodName(1)+"(...) is not supported.");
   }

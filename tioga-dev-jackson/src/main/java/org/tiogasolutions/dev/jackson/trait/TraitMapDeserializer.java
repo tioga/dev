@@ -31,13 +31,15 @@ import java.util.Map;
  */
 public final class TraitMapDeserializer extends StdDeserializer<TraitMap> {
 
+  private static final long serialVersionUID = 1L;
+
   public TraitMapDeserializer() {
       super(TraitMap.class);
   }
 
   @Override
   public TraitMap deserialize(JsonParser jp, DeserializationContext context) throws IOException {
-    Map map = jp.readValueAs(Map.class);
+    Map<?,?> map = jp.readValueAs(Map.class);
     return new TraitMap(map);
   }
 }

@@ -30,8 +30,9 @@ import org.tiogasolutions.dev.domain.money.Money;
  * Time: 10:36 PM
  */
 
-public final class TiogaMoneySerializer extends StdScalarSerializer<Money>
-{
+public final class TiogaMoneySerializer extends StdScalarSerializer<Money> {
+
+    private static final long serialVersionUID = 1L;
 
     public TiogaMoneySerializer() {
         super(Money.class);

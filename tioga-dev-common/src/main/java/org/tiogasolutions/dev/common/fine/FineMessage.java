@@ -26,6 +26,8 @@ import java.util.Map;
  */
 public class FineMessage implements Serializable {
 
+  private static final long serialVersionUID = 1L;
+
   private final String text;
   private final String id;
   private final TraitMap traitMap;

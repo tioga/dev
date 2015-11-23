@@ -31,7 +31,7 @@ public class QueryResultTranslatorTest {
     String json = translator.toJson(origQr);
     assertEquals(json, EMPTY_RESULT_JSON);
 
-    QueryResult translatedQr = translator.fromJson(QueryResult.class, json);
+    QueryResult<?> translatedQr = translator.fromJson(QueryResult.class, json);
 
     assertEquals(origQr, translatedQr);
   }
@@ -42,7 +42,7 @@ public class QueryResultTranslatorTest {
     String json = translator.toJson(origQr);
     assertEquals(json, SINGLE_RESULT_JSON);
 
-    QueryResult translatedQr = translator.fromJson(QueryResult.class, json);
+    QueryResult<?> translatedQr = translator.fromJson(QueryResult.class, json);
 
     assertEquals(origQr, translatedQr);
   }
@@ -55,7 +55,7 @@ public class QueryResultTranslatorTest {
     String json = translator.toJson(origQr);
     assertEquals(json, MULTIPLE_COMPLETE_JSON);
 
-    QueryResult translatedQr = translator.fromJson(QueryResult.class, json);
+    QueryResult<?> translatedQr = translator.fromJson(QueryResult.class, json);
 
     assertEquals(origQr, translatedQr);
 
@@ -67,7 +67,7 @@ public class QueryResultTranslatorTest {
     String json = translator.toJson(origQr);
     assertEquals(json, MULTIPLE_INCOMPLETE_EXACT_JSON);
 
-    QueryResult translatedQr = translator.fromJson(QueryResult.class, json);
+    QueryResult<?> translatedQr = translator.fromJson(QueryResult.class, json);
 
     assertEquals(origQr, translatedQr);
 

@@ -6,6 +6,8 @@ import org.tiogasolutions.dev.common.net.HttpStatusCode;
 
 public class Api5xxException extends ApiException {
 
+  private static final long serialVersionUID = 1L;
+
   /*default*/ Api5xxException(HttpStatusCode httpStatusCode) {
     super(assert500(httpStatusCode));
   }

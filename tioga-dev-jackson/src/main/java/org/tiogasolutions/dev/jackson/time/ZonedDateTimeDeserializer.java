@@ -25,6 +25,8 @@ import org.tiogasolutions.dev.common.DateUtils;
 
 public final class ZonedDateTimeDeserializer extends StdScalarDeserializer<ZonedDateTime> {
 
+  private static final long serialVersionUID = 1L;
+
   public ZonedDateTimeDeserializer() {
     super(ZonedDateTime.class);
   }
@@ -32,7 +34,7 @@ public final class ZonedDateTimeDeserializer extends StdScalarDeserializer<Zoned
   @Override
   public ZonedDateTime deserialize(JsonParser jp, DeserializationContext context) throws IOException {
     String value = jp.readValueAs(String.class);
-    return DateUtils.toDateTime(value);
+    return DateUtils.toZonedDateTime(value);
   }
 }
 

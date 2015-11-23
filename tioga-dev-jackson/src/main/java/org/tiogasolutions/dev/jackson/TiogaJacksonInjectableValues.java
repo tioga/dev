@@ -22,6 +22,8 @@ import com.fasterxml.jackson.databind.InjectableValues;
 
 public class TiogaJacksonInjectableValues extends InjectableValues.Std {
 
+  private static final long serialVersionUID = 1L;
+
   public TiogaJacksonInjectableValues() {
   }
 

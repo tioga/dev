@@ -23,6 +23,8 @@ import static java.lang.String.format;
 
 public class Money extends Number implements Serializable, Comparable<Money> {
 
+  private static final long serialVersionUID = 1L;
+
   private static final String errorTemplate = format("The value %%s could not be converted to a %s: %%s", BigDecimal.class.getSimpleName());
   private static final java.text.DecimalFormat DollarFormat = new java.text.DecimalFormat("0.00");
 
@@ -175,12 +177,21 @@ public class Money extends Number implements Serializable, Comparable<Money> {
     return new Money(longValue);
   }
 
-  public boolean equals(Object object) {
-    if (object instanceof Money) {
-      Money amount = (Money)object;
-      return internalValue == amount.getInternalValue();
-    }
-    return false;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Money money = (Money) o;
+
+    if (internalValue != money.internalValue) return false;
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    return (int) (internalValue ^ (internalValue >>> 32));
   }
 
   public boolean greaterThan(Money that) {

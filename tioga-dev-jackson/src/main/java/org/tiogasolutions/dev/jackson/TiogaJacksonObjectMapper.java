@@ -21,6 +21,8 @@ import java.util.*;
 
 public class TiogaJacksonObjectMapper extends ObjectMapper {
 
+  private static final long serialVersionUID = 1L;
+
   private final Collection<? extends Module> modules;
   private final Collection<? extends TiogaJacksonInjectable> injectables;
 

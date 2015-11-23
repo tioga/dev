@@ -7,6 +7,8 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.PRECONDITION_FAIL
 
 public class ApiPreconditionFailedException extends Api4xxException {
 
+  private static final long serialVersionUID = 1L;
+
   /*default*/ ApiPreconditionFailedException() {
     super(PRECONDITION_FAILED);
   }

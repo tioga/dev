@@ -25,6 +25,8 @@ import org.tiogasolutions.dev.common.DateUtils;
 
 public final class LocalDateTimeDeserializer extends StdScalarDeserializer<LocalDateTime> {
 
+  private static final long serialVersionUID = 1L;
+
   public LocalDateTimeDeserializer() {
     super(LocalDateTime.class);
   }

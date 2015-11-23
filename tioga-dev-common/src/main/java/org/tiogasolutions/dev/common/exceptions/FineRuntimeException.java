@@ -3,10 +3,13 @@ package org.tiogasolutions.dev.common.exceptions;
 import org.tiogasolutions.dev.common.StringUtils;
 import org.tiogasolutions.dev.common.fine.*;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 
 public class FineRuntimeException extends RuntimeException implements FineMessageAccessing {
+
+  private static final long serialVersionUID = 1L;
 
   private final FineMessageSet messageSet;
 

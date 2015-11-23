@@ -13,7 +13,7 @@ public class TiogaJacksonInjectable {
     this.value = value;
   }
 
-  public TiogaJacksonInjectable(Class key, Object value) {
+  public TiogaJacksonInjectable(Class<?> key, Object value) {
     this.key = key.getName();
     this.value = value;
   }

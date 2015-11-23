@@ -26,7 +26,7 @@ import java.util.List;
  */
 public interface QueryResult<T> extends Iterable<T> {
 
-    Class<T> getContainsType();
+    Class<? extends T> getContainsType();
 
     boolean isContainsType(Class<?> type);
 

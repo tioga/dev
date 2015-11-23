@@ -19,10 +19,7 @@ package org.tiogasolutions.dev.common;
 import org.tiogasolutions.dev.common.exceptions.ExceptionUtils;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -104,7 +101,7 @@ public class ReflectUtils {
     }
   }
 
-  public static Method getMethod(Class<?> type, String methodName, Class...parameterTypes) {
+  public static Method getMethod(Class<?> type, String methodName, Class<?>...parameterTypes) {
     try {
       return type.getMethod(methodName, parameterTypes);
     } catch (NoSuchMethodException e) {
@@ -113,7 +110,7 @@ public class ReflectUtils {
     return null;
   }
 
-  public static Method getWriteMethod(Class<?> type, String propertyName, Class argType) {
+  public static Method getWriteMethod(Class<?> type, String propertyName, Class<?> argType) {
     String methodName = "set" + propertyName.substring(0,1).toUpperCase()+propertyName.substring(1);
     try {
       return type.getMethod(methodName, argType);
@@ -167,12 +164,17 @@ public class ReflectUtils {
     StackTraceElement[] elements = Thread.currentThread().getStackTrace();
     return elements[offset + 2];
   }
-  
+
+  @SuppressWarnings("unchecked")
+  public static <T> T[] newArray(Class<T> type, int size) {
+    return (T[]) Array.newInstance(type, size);
+  }
+
   public static <T> T[] toArray(Class<T> type, Collection<T> collection) {
     
     // noinspection unchecked
-    T[] array = (T[]) Array.newInstance(type, collection.size());
-    
+    T[] array = newArray(type, collection.size());
+
     int i = 0;
     for (T t : collection) {
       array[i] = t;
@@ -195,16 +197,15 @@ public class ReflectUtils {
         String msg = String.format("The method %s.%s does not exist.", type.getName(), "valueOf");
         throw new IllegalArgumentException(msg);
       }
-      // noinspection unchecked
-      return (T)method.invoke(null, stringValue);
+      return invokeStatic(method, type, stringValue);
 
     } catch (Throwable e) {
       throw new RuntimeException(e);
     }
   }
 
-  public static List<Field> getFields(Class type) {
-    List<Field> fields = new ArrayList<Field>();
+  public static List<Field> getFields(Class<?> type) {
+    List<Field> fields = new ArrayList<>();
 
     while (type != null) {
       Collections.addAll(fields, type.getDeclaredFields());
@@ -214,8 +215,8 @@ public class ReflectUtils {
     return fields;
   }
 
-  public static List<Field> getNonStaticFields(Class type) {
-    List<Field> fields = new ArrayList<Field>();
+  public static List<Field> getNonStaticFields(Class<?> type) {
+    List<Field> fields = new ArrayList<>();
 
     while (type != null) {
       for (Field field : type.getDeclaredFields()) {
@@ -229,8 +230,8 @@ public class ReflectUtils {
     return fields;
   }
 
-  public static List<Field> getStaticFields(Class type) {
-    List<Field> fields = new ArrayList<Field>();
+  public static List<Field> getStaticFields(Class<?> type) {
+    List<Field> fields = new ArrayList<>();
 
     while (type != null) {
       for (Field field : type.getDeclaredFields()) {
@@ -251,6 +252,24 @@ public class ReflectUtils {
       }
     }
     return null;
+  }
+
+  public static <T> T invokeStatic(Method method, Class<T> returnType, Object...args) throws InvocationTargetException, IllegalAccessException {
+    return invoke(null, method, returnType, args);
+  }
+
+  @SuppressWarnings("unchecked")
+  public static <T> T invoke(Object object, Method method, Class<T> returnType, Object...args) throws InvocationTargetException, IllegalAccessException {
+    if (returnType != null && method.getReturnType().equals(returnType) == false) {
+      String msg = String.format("The method \"%s.%s(..):%s\" does not return %s.",
+          method.getDeclaringClass().getName(),
+          method.getName(),
+          method.getReturnType().getName(),
+          returnType.getName());
+      throw new IllegalArgumentException(msg);
+    }
+
+    return (T)method.invoke(object, args);
   }
 }
 

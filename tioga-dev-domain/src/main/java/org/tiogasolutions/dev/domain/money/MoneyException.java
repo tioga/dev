@@ -17,6 +17,9 @@
 package org.tiogasolutions.dev.domain.money;
 
 public class MoneyException extends RuntimeException {
+
+  private static final long serialVersionUID = 1L;
+
   public MoneyException(String message) {
     super(message);
   }

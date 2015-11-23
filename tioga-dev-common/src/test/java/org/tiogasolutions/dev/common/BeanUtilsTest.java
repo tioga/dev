@@ -59,7 +59,7 @@ public class BeanUtilsTest {
   }
 
   public void testToMap() throws Exception {
-    Map map = BeanUtils.toMap();
+    Map<String,String> map = BeanUtils.toMap();
     assertEquals(map.size(), 0);
 
     String[] nullArray = null;
@@ -75,7 +75,7 @@ public class BeanUtilsTest {
     validateMapEntry(map, "blue", "0000ff");
   }
 
-  private void validateMapEntry(Map map, String key, String value) {
+  private void validateMapEntry(Map<String,String> map, String key, String value) {
     assertTrue(map.containsKey(key));
     assertEquals(map.get(key), value);
   }
