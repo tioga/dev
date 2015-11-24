@@ -260,7 +260,11 @@ public class BeanUtils {
     int size = Math.max(collectionA.size(), collectionB.size());
     List<T> list = new ArrayList<>(size);
 
-    list.addAll(collectionA.stream().filter(collectionB::contains).collect(Collectors.toList()));
+    for (T object : collectionA) {
+      if (collectionB.contains(object)) {
+        list.add(object);
+      }
+    }
 
     return list;
   }
