@@ -24,12 +24,12 @@ import java.util.*;
  * Time: 12:18 AM
  */
 public final class ListQueryResult<T> implements QueryResult<T> {
-  private final Class<? extends T> type;
+  private final Class<? extends T> containsType;
   private final int limit;
   private final int offset;
   private int totalFound;
   private boolean totalExact;
-  private final List<T> resultList;
+  private final List<T> results;
 
   public static <T> ListQueryResult<T> newEmpty(Class<T> type) {
     return new ListQueryResult<>(type, 0, 0, 0, true, Collections.<T>emptyList());
@@ -69,39 +69,39 @@ public final class ListQueryResult<T> implements QueryResult<T> {
     return new ListQueryResult<>(type, limit, offset, totalFound, totalExact, Arrays.asList(results));
   }
 
-  private ListQueryResult(Class<? extends T> type,
+  private ListQueryResult(Class<? extends T> containsType,
                           int limit,
                           int offset,
                           int totalFound,
                           boolean totalExact,
                           Collection<T> results) {
-    this.type = type;
+    this.containsType = containsType;
     this.limit = limit;
     this.offset = offset;
     this.totalFound = totalFound;
     this.totalExact = totalExact;
     List<T> localList = new ArrayList<>(results);
-    this.resultList = Collections.unmodifiableList(localList);
+    this.results = Collections.unmodifiableList(localList);
   }
 
   @Override
   public Class<? extends T> getContainsType() {
-    return type;
+    return containsType;
   }
 
   @Override
-  public boolean isContainsType(Class<?> type) {
-    return this.type.isAssignableFrom(type);
+  public boolean isContainsType(Class<?> containsType) {
+    return this.containsType.isAssignableFrom(containsType);
   }
 
   @Override
   public boolean isEmpty() {
-    return resultList.isEmpty();
+    return results.isEmpty();
   }
 
   @Override
   public boolean isNotEmpty() {
-    return !resultList.isEmpty();
+    return !results.isEmpty();
   }
 
   @Override
@@ -111,7 +111,7 @@ public final class ListQueryResult<T> implements QueryResult<T> {
 
   @Override
   public int getSize() {
-    return resultList.size();
+    return results.size();
   }
 
   @Override
@@ -131,27 +131,27 @@ public final class ListQueryResult<T> implements QueryResult<T> {
 
   @Override
   public T getFirst() {
-    return resultList.get(0);
+    return results.get(0);
   }
 
   @Override
   public T getLast() {
-    return resultList.get(resultList.size() - 1);
+    return results.get(results.size() - 1);
   }
 
   @Override
   public T getAt(int index) {
-    return resultList.get(index);
+    return results.get(index);
   }
 
   @Override
   public List<T> getResults() {
-    return resultList;
+    return results;
   }
 
   @Override
   public Iterator<T> iterator() {
-    return resultList.iterator();
+    return results.iterator();
   }
 
   @Override
@@ -161,7 +161,7 @@ public final class ListQueryResult<T> implements QueryResult<T> {
 
   @Override
   public boolean getHasNext() {
-    return offset + resultList.size() < totalFound;
+    return offset + results.size() < totalFound;
   }
 
   @Override
@@ -174,31 +174,31 @@ public final class ListQueryResult<T> implements QueryResult<T> {
     if (limit != that.limit) return false;
     if (offset != that.offset) return false;
     if (totalFound != that.totalFound) return false;
-    if (resultList.size() != that.resultList.size()) return false;
-    if (!resultList.equals(that.resultList)) return false;
-    if (!type.equals(that.type)) return false;
+    if (results.size() != that.results.size()) return false;
+    if (!results.equals(that.results)) return false;
+    if (!containsType.equals(that.containsType)) return false;
 
     return true;
   }
 
   @Override
   public int hashCode() {
-    int result = type.hashCode();
+    int result = containsType.hashCode();
     result = 31 * result + offset;
     result = 31 * result + limit;
     result = 31 * result + totalFound;
-    result = 31 * result + resultList.hashCode();
+    result = 31 * result + results.hashCode();
     return result;
   }
 
   @Override
   public String toString() {
     return "ListQueryResult{" +
-        "type=" + type +
+        "type=" + containsType +
         ", limit=" + limit +
         ", offset=" + offset +
         ", totalFound=" + totalFound +
-        ", resultList=" + resultList +
+        ", results=" + results +
         '}';
   }
 }
