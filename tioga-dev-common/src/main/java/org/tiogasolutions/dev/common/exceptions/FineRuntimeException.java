@@ -1,5 +1,6 @@
 package org.tiogasolutions.dev.common.exceptions;
 
+import org.tiogasolutions.dev.common.EqualsUtils;
 import org.tiogasolutions.dev.common.StringUtils;
 import org.tiogasolutions.dev.common.fine.*;
 
@@ -129,6 +130,25 @@ public class FineRuntimeException extends RuntimeException implements FineMessag
     int result = getClass().getName().hashCode();
     result = 31 * result + messageSet.hashCode();
     return result;
+  }
+
+  @Override
+  public String toString() {
+    String msg = super.toString();
+    boolean first = true;
+    for (FineMessage fineMessage : getMessageSet()) {
+      if (EqualsUtils.objectsEqual(getMessage(), fineMessage.getText()) == false) {
+        if (!first) msg += "\n";
+        msg += fineMessage.getText();
+        first = false;
+      }
+      for (Map.Entry<String,String> entry : fineMessage.getTraitMap().getMap().entrySet()) {
+        if (!first) msg += "\n";
+        msg += String.format("      %s = %s", entry.getKey(), entry.getValue());
+        first = false;
+      }
+    }
+    return msg;
   }
 
   private static FineMessageSet toMsgSet(String message, FineMessageSet fineMessageSet, Throwable ex, String...traits) {
