@@ -4,6 +4,7 @@ import java.time.*;
 import java.util.*;
 import java.time.format.DateTimeFormatter;
 
+@SuppressWarnings("Duplicates")
 public class DateUtilsFactory {
 
   private final ZoneId zoneId;
@@ -247,6 +248,7 @@ public class DateUtilsFactory {
       throw new IllegalArgumentException(msg);
     }
   }
+
   public LocalDateTime toLocalDateTime(String date) {
     if (date == null) {
       return null;
@@ -261,13 +263,14 @@ public class DateUtilsFactory {
     int pos = date.indexOf("T");
     int zonePos = date.indexOf("-", pos);
 
-    if (zonePos >= 0) {
+    if (zonePos >= 0 || date.toUpperCase().endsWith("Z")) {
       return toZonedDateTime(date).toLocalDateTime();
 
     } else {
       return LocalDateTime.parse(date);
     }
   }
+
   public LocalDateTime toLocalDateTime(long date) {
     if (date == 0) {
       return null;
@@ -370,6 +373,12 @@ public class DateUtilsFactory {
         date = date.substring(0, posZ);
         date += zone;
         return ZonedDateTime.parse(date);
+
+      } else if (date.toUpperCase().endsWith("Z")) {
+        LocalDateTime localDateTime = LocalDateTime.parse(date, getFormatter(date));
+        ZoneId zoneId = ZoneId.of("Z");
+        ZonedDateTime value = ZonedDateTime.of(localDateTime, zoneId);
+        return value;
 
       } else {
         LocalDateTime localDateTime = LocalDateTime.parse(date, getFormatter(date));

@@ -17,10 +17,10 @@ public class DateUtilsFactoryTest {
   public static Iterator<Object[]> getTimeZones() throws Exception {
 
     List<Object[]> list = new ArrayList<>();
-
-    list.add(new Object[]{new Config("GMT")});
-    list.add(new Object[]{new Config("America/Los_Angeles")});
-    list.add(new Object[]{new Config("America/New_York")});
+    list.add(new Object[]{new Config("Z", "")});
+    list.add(new Object[]{new Config("GMT", "-00:00")});
+    list.add(new Object[]{new Config("America/Los_Angeles", "-07:00")});
+    list.add(new Object[]{new Config("America/New_York", "-04:00")});
 
     return list.iterator();
   }
@@ -144,9 +144,9 @@ public class DateUtilsFactoryTest {
   public void toLocalTime_Object(Config config) {
     assertEquals(config.factory.toLocalTime((Object) null), null);
 
-    validate(config, config.factory.toLocalTime(        config.localTime), false);
-    validate(config, config.factory.toLocalTime((Object)config.stringTime), false);
-    validate(config, config.factory.toLocalTime((Object)config.utcDateTime), false);
+    validate(config, config.factory.toLocalTime(         config.localTime), false);
+    validate(config, config.factory.toLocalTime((Object) config.stringTime), false);
+    validate(config, config.factory.toLocalTime((Object) config.utcDateTime), false);
     validate(config, config.factory.toLocalTime((Object) new java.util.Date(config.utcDateTime)), false);
     validate(config, config.factory.toLocalTime((Object) config.calendar), false);
     validate(config, config.factory.toLocalTime((Object) config.localDateTime), false);
@@ -339,7 +339,7 @@ public class DateUtilsFactoryTest {
 
     validate(config, config.factory.toZonedDateTime(        config.zonedDateTime), false);
 
-    validate(config, config.factory.toZonedDateTime((Object)config.stringDateTimeHyT), false);
+    validate(config, config.factory.toZonedDateTime((Object) config.stringDateTimeHyT), false);
     validate(config, config.factory.toZonedDateTime((Object) config.stringDateTimeFsT), false);
 
     validate(config, config.factory.toZonedDateTime((Object) config.stringDateTimeHyZ), false);
@@ -665,7 +665,7 @@ public class DateUtilsFactoryTest {
 
     public DateUtilsFactory factory;
 
-    public Config(String timeZone) throws Exception {
+    public Config(String timeZone, String offset) throws Exception {
       this.timeZone = timeZone;
       this.zoneId = ZoneId.of(timeZone);
 
@@ -675,8 +675,10 @@ public class DateUtilsFactoryTest {
       calendar = GregorianCalendar.from(zonedDateTime);
       calendarMidnight = GregorianCalendar.from(zonedDateTimeMidnight);
 
-      stringDateTimeHyZ =    stringDateMidnightHy + "T" + stringTime + "-07:00["+timeZone+"]";
-      stringDateTimeFsZ =    stringDateMidnightFs + "T" + stringTime + "-07:00["+timeZone+"]";
+      String tail = ("Z".equals(timeZone)) ? "Z" : offset + "["+timeZone+"]";
+
+      stringDateTimeHyZ =    stringDateMidnightHy + "T" + stringTime + tail;
+      stringDateTimeFsZ =    stringDateMidnightFs + "T" + stringTime + tail;
 
       utcDateTime = zonedDateTime.toInstant().toEpochMilli();
       utcDateMidnight = zonedDateTimeMidnight.toInstant().toEpochMilli();

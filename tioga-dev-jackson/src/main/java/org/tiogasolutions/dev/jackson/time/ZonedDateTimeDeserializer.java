@@ -34,7 +34,8 @@ public final class ZonedDateTimeDeserializer extends StdScalarDeserializer<Zoned
   @Override
   public ZonedDateTime deserialize(JsonParser jp, DeserializationContext context) throws IOException {
     String value = jp.readValueAs(String.class);
-    return DateUtils.toZonedDateTime(value);
+    ZonedDateTime retVal =  DateUtils.toZonedDateTime(value);
+    return retVal;
   }
 }
 
