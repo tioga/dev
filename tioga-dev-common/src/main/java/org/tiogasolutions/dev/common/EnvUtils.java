@@ -1,8 +1,15 @@
 package org.tiogasolutions.dev.common;
 
+import org.slf4j.Logger;
+
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 public class EnvUtils {
+
+  private static final Logger log = getLogger(EnvUtils.class);
 
   private EnvUtils() {
   }
@@ -26,12 +33,24 @@ public class EnvUtils {
   }
 
   public static String requireProperty(String propertyName) {
+    return requireProperty(propertyName, IllegalArgumentException.class);
+  }
+
+  public static String requireProperty(String propertyName, Class<? extends RuntimeException> type) {
     String value = findProperty(propertyName, null);
-    if (StringUtils.isBlank(value)) {
-      String msg = String.format("The system or environment property \"%s\" must be specified.", propertyName);
+    if (StringUtils.isNotBlank(value)) {
+      return value;
+    }
+
+    String msg = String.format("The system or environment property \"%s\" must be specified.", propertyName);
+
+    try {
+      throw type.getConstructor(String.class).newInstance(msg);
+    } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
+      log.error("Cannot create custom exception: " + type.getName(), ex);
+      // Fall back to our default
       throw new IllegalArgumentException(msg);
     }
-    return value;
   }
 
   public static String findProperty(String propertyName) {
