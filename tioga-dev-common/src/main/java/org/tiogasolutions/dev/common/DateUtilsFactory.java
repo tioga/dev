@@ -61,6 +61,9 @@ public class DateUtilsFactory {
     }
   }
   public LocalDate toLocalDate(String date) {
+    try { return LocalDate.parse(date); }
+    catch (Exception ignored) {}
+
     if (StringUtils.isBlank(date)) {
       return null;
     }
@@ -152,6 +155,9 @@ public class DateUtilsFactory {
     }
   }
   public LocalTime toLocalTime(String date) {
+    try { return LocalTime.parse(date); }
+    catch (Exception ignored) {}
+
     if (date == null) {
       return null;
     }
@@ -250,6 +256,9 @@ public class DateUtilsFactory {
   }
 
   public LocalDateTime toLocalDateTime(String date) {
+    try { return LocalDateTime.parse(date); }
+    catch (Exception ignored) {}
+
     if (date == null) {
       return null;
     }
@@ -357,7 +366,11 @@ public class DateUtilsFactory {
   public ZonedDateTime toDateTime(String date) {
     return toZonedDateTime(date);
   }
+
   public ZonedDateTime toZonedDateTime(String date) {
+    try { return ZonedDateTime.parse(date); }
+    catch (Exception ignored) {}
+
     if (date == null) {
       return null;
     }
