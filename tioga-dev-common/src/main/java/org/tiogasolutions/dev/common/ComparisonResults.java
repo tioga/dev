@@ -128,6 +128,13 @@ public class ComparisonResults {
     }
   }
 
+  @Override
+  public String toString() {
+    return "ComparisonResults{" +
+            "results=" + results +
+            '}';
+  }
+
   public static class Result {
 
     private final String beanName;
@@ -156,6 +163,16 @@ public class ComparisonResults {
 
     public Type getType() {
       return type;
+    }
+
+    @Override
+    public String toString() {
+      return "Result{" +
+              "beanName='" + beanName + '\'' +
+              ", valueA=" + valueA +
+              ", valueB=" + valueB +
+              ", type=" + type +
+              '}';
     }
   }
 
