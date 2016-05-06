@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 project(':tioga-dev-common') {
-  version = "5.2.0"
+  version = "5.2.1"
 
   dependencies {
     compile("org.slf4j:slf4j-api:1.7.7")
