@@ -20,6 +20,16 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tioga-dev-common_main" target="1.8" />
+      <module name="tioga-dev-common_test" target="1.8" />
+      <module name="tioga-dev-domain_main" target="1.8" />
+      <module name="tioga-dev-domain_test" target="1.8" />
+      <module name="tioga-dev-jackson_main" target="1.8" />
+      <module name="tioga-dev-jackson_test" target="1.8" />
+      <module name="tioga-dev-testing_main" target="1.8" />
+      <module name="tioga-dev-testing_test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-Xlint" />

@@ -1,0 +1,8 @@
+# image: java:8
+image: qlik/gradle
+
+pipelines:
+  default:
+    - step:
+        script:
+          - gradle clean test --quiet

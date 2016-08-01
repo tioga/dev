@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dev.iml" filepath="$PROJECT_DIR$/dev.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-dev-common/tioga-dev-common.iml" filepath="$PROJECT_DIR$/tioga-dev-common/tioga-dev-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-dev-domain/tioga-dev-domain.iml" filepath="$PROJECT_DIR$/tioga-dev-domain/tioga-dev-domain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-dev-jackson/tioga-dev-jackson.iml" filepath="$PROJECT_DIR$/tioga-dev-jackson/tioga-dev-jackson.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-dev-testing/tioga-dev-testing.iml" filepath="$PROJECT_DIR$/tioga-dev-testing/tioga-dev-testing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dev.iml" filepath="$PROJECT_DIR$/.idea/modules/dev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-common/tioga-dev-common.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-common/tioga-dev-common.iml" group="tioga-dev-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-common/tioga-dev-common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-common/tioga-dev-common_main.iml" group="tioga-dev-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-common/tioga-dev-common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-common/tioga-dev-common_test.iml" group="tioga-dev-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-domain/tioga-dev-domain.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-domain/tioga-dev-domain.iml" group="tioga-dev-domain" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-domain/tioga-dev-domain_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-domain/tioga-dev-domain_main.iml" group="tioga-dev-domain" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-domain/tioga-dev-domain_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-domain/tioga-dev-domain_test.iml" group="tioga-dev-domain" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-jackson/tioga-dev-jackson.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-jackson/tioga-dev-jackson.iml" group="tioga-dev-jackson" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-jackson/tioga-dev-jackson_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-jackson/tioga-dev-jackson_main.iml" group="tioga-dev-jackson" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-jackson/tioga-dev-jackson_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-jackson/tioga-dev-jackson_test.iml" group="tioga-dev-jackson" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-testing/tioga-dev-testing.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-testing/tioga-dev-testing.iml" group="tioga-dev-testing" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-testing/tioga-dev-testing_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-testing/tioga-dev-testing_main.iml" group="tioga-dev-testing" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-dev-testing/tioga-dev-testing_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-dev-testing/tioga-dev-testing_test.iml" group="tioga-dev-testing" />
     </modules>
   </component>
 </project>

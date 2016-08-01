@@ -13,15 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 project(':tioga-dev-testing') {
-  version = "4.2.5"
+    version = "4.2.5"
 
-  dependencies {
-    compile project(":tioga-dev-domain")
-    compile("com.fasterxml.jackson.core:jackson-annotations:2.5.0")
+    dependencies {
+        compile project(":tioga-dev-domain")
+        compile("com.fasterxml.jackson.core:jackson-annotations:2.5.0")
 
-    testCompile ("org.testng:testng:6.8.21")
-  }
+        testCompile("org.testng:testng:6.8.21")
+    }
 
-  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
+    apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }

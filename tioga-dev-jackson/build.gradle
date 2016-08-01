@@ -14,19 +14,46 @@
  * limitations under the License.
  */
 
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "jp.classmethod.aws:gradle-aws-plugin:0.21"
+    }
+}
+
 project(':tioga-dev-jackson') {
-  version = "4.2.5";
+    version = "4.2.5";
 
-  dependencies {
-    compile(project(":tioga-dev-common"))
-    compile(project(":tioga-dev-domain"))
+    dependencies {
+        compile(project(":tioga-dev-common"))
+        compile(project(":tioga-dev-domain"))
 
-    compile("com.fasterxml.jackson.core:jackson-databind:2.5.1")
-    // compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.2")
+        compile("com.fasterxml.jackson.core:jackson-databind:2.5.1")
+        // compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.2")
 
-    testCompile(project(":tioga-dev-testing"))
-    testCompile("org.testng:testng:6.8.21")
-  }
+        testCompile(project(":tioga-dev-testing"))
+        testCompile("org.testng:testng:6.8.21")
+    }
 
-  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
+    apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
+
+    apply plugin: "jp.classmethod.aws.s3"
+    aws {
+        profileName = 'tioga-build'
+        region = 'ap-northeast-1'
+    }
+    task reportsToS3(type: jp.classmethod.aws.gradle.s3.SyncTask) {
+        bucketName 'tioga'
+        source file('build/reports')
+        prefix "projects/dev/dev-jackson/reports/"
+
+        metadataProvider { bucket, key, file ->
+            com.amazonaws.services.s3.model.ObjectMetadata m = new com.amazonaws.services.s3.model.ObjectMetadata()
+            m.setCacheControl("no-cache, no-store")
+            return m
+        }
+    }
 }
