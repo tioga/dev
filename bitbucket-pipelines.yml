@@ -6,6 +6,6 @@ pipelines:
     - step:
         script:
           - gradle clean test
-          - gradle htmlDependencyReport -Dno-fail-version-conflict=true
+#          - gradle htmlDependencyReport -Dno-fail-version-conflict=true
           - gradle reportsToS3 -Dno-fail-version-conflict=true
           
