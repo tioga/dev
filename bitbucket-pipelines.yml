@@ -5,4 +5,4 @@ pipelines:
   default:
     - step:
         script:
-          - gradle clean test --quiet
+          - gradle clean test
