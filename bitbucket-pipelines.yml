@@ -6,5 +6,5 @@ pipelines:
     - step:
         script:
           - gradle clean test
-          - gradle reportsToS3
+          - gradle reportsToS3 
           
