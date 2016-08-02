@@ -7,6 +7,6 @@ pipelines:
         script:
           # - gradle clean test
           # - gradle reportsToS3 -Dno-fail-version-conflict=true 
-          - git remote add github-clone https://TiogaBot@github.com/tioga/dev.git
+          - git remote add github-clone https://TiogaBot:go3VersionControl!@github.com/tioga/dev.git
           - git push github-clone
           
