@@ -6,6 +6,7 @@ pipelines:
     - step:
         script:
           - gradle clean test
-#          - gradle htmlDependencyReport -Dno-fail-version-conflict=true
           - gradle reportsToS3 -Dno-fail-version-conflict=true
+          - git remote add github-clone https://github.com/tioga/dev.git
+          - git push github-clone
           
