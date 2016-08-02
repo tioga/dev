@@ -5,8 +5,8 @@ pipelines:
   default:
     - step:
         script:
-          - gradle clean test
-          - gradle reportsToS3 -Dno-fail-version-conflict=true 
+          # - gradle clean test
+          # - gradle reportsToS3 -Dno-fail-version-conflict=true 
           - git remote add github-clone https://TiogaBot@github.com/tioga/dev.git
           - git push github-clone
           
