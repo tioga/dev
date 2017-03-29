@@ -260,7 +260,7 @@ public abstract class ExceptionUtils {
 
         Throwable last = e.getCause();
 
-        List<Throwable> list = new ArrayList<Throwable>();
+        List<Throwable> list = new ArrayList<>();
         list.add(e);
 
         while (last != e && last != null) {
