@@ -9,35 +9,39 @@ public class ApiNotFoundException extends Api4xxException {
 
   private static final long serialVersionUID = 1L;
 
-  /*default*/ ApiNotFoundException() {
+  public ApiNotFoundException() {
     super(NOT_FOUND);
   }
 
-  /*default*/ ApiNotFoundException(String message, String... traits) {
+  public ApiNotFoundException(String message) {
+    super(NOT_FOUND, message);
+  }
+
+  public ApiNotFoundException(String message, String... traits) {
     super(NOT_FOUND, message, traits);
   }
 
-  /*default*/ ApiNotFoundException(Throwable ex, String... traits) {
+  public ApiNotFoundException(Throwable ex, String... traits) {
     super(NOT_FOUND, ex, traits);
   }
 
-  /*default*/ ApiNotFoundException(String message, Throwable ex, String... traits) {
+  public ApiNotFoundException(String message, Throwable ex, String... traits) {
     super(NOT_FOUND, message, ex, traits);
   }
 
-  /*default*/ ApiNotFoundException(FineMessage richMessage) {
+  public ApiNotFoundException(FineMessage richMessage) {
     super(NOT_FOUND, richMessage);
   }
 
-  /*default*/ ApiNotFoundException(FineMessage richMessage, Throwable ex) {
+  public ApiNotFoundException(FineMessage richMessage, Throwable ex) {
     super(NOT_FOUND, richMessage, ex);
   }
 
-  /*default*/ ApiNotFoundException(FineMessageSet messageSet) {
+  public ApiNotFoundException(FineMessageSet messageSet) {
     super(NOT_FOUND, messageSet);
   }
 
-  /*default*/ ApiNotFoundException(FineMessageSet messageSet, Throwable ex) {
+  public ApiNotFoundException(FineMessageSet messageSet, Throwable ex) {
     super(NOT_FOUND, messageSet, ex);
   }
 }

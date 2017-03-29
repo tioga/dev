@@ -7,37 +7,41 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.UNAUTHORIZED;
 
 public class ApiUnauthorizedException extends Api4xxException {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /*default*/ ApiUnauthorizedException() {
-    super(UNAUTHORIZED);
-  }
+    public ApiUnauthorizedException() {
+        super(UNAUTHORIZED);
+    }
 
-  /*default*/ ApiUnauthorizedException(String message, String... traits) {
-    super(UNAUTHORIZED, message, traits);
-  }
+    public ApiUnauthorizedException(String message) {
+        super(UNAUTHORIZED, message);
+    }
 
-  /*default*/ ApiUnauthorizedException(Throwable ex, String... traits) {
-    super(UNAUTHORIZED, ex, traits);
-  }
+    public ApiUnauthorizedException(String message, String... traits) {
+        super(UNAUTHORIZED, message, traits);
+    }
 
-  /*default*/ ApiUnauthorizedException(String message, Throwable ex, String... traits) {
-    super(UNAUTHORIZED, message, ex, traits);
-  }
+    public ApiUnauthorizedException(Throwable ex, String... traits) {
+        super(UNAUTHORIZED, ex, traits);
+    }
 
-  /*default*/ ApiUnauthorizedException(FineMessage richMessage) {
-    super(UNAUTHORIZED, richMessage);
-  }
+    public ApiUnauthorizedException(String message, Throwable ex, String... traits) {
+        super(UNAUTHORIZED, message, ex, traits);
+    }
 
-  /*default*/ ApiUnauthorizedException(FineMessage richMessage, Throwable ex) {
-    super(UNAUTHORIZED, richMessage, ex);
-  }
+    public ApiUnauthorizedException(FineMessage richMessage) {
+        super(UNAUTHORIZED, richMessage);
+    }
 
-  /*default*/ ApiUnauthorizedException(FineMessageSet messageSet) {
-    super(UNAUTHORIZED, messageSet);
-  }
+    public ApiUnauthorizedException(FineMessage richMessage, Throwable ex) {
+        super(UNAUTHORIZED, richMessage, ex);
+    }
 
-  /*default*/ ApiUnauthorizedException(FineMessageSet messageSet, Throwable ex) {
-    super(UNAUTHORIZED, messageSet, ex);
-  }
+    public ApiUnauthorizedException(FineMessageSet messageSet) {
+        super(UNAUTHORIZED, messageSet);
+    }
+
+    public ApiUnauthorizedException(FineMessageSet messageSet, Throwable ex) {
+        super(UNAUTHORIZED, messageSet, ex);
+    }
 }

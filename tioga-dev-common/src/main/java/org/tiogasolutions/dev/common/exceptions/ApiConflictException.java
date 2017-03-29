@@ -7,37 +7,41 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.CONFLICT;
 
 public class ApiConflictException extends Api4xxException {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /*default*/ ApiConflictException() {
-    super(CONFLICT);
-  }
+    public ApiConflictException() {
+        super(CONFLICT);
+    }
 
-  /*default*/ ApiConflictException(String message, String... traits) {
-    super(CONFLICT, message, traits);
-  }
+    public ApiConflictException(String message) {
+        super(CONFLICT, message);
+    }
 
-  /*default*/ ApiConflictException(Throwable ex, String... traits) {
-    super(CONFLICT, ex, traits);
-  }
+    public ApiConflictException(String message, String... traits) {
+        super(CONFLICT, message, traits);
+    }
 
-  /*default*/ ApiConflictException(String message, Throwable ex, String... traits) {
-    super(CONFLICT, message, ex, traits);
-  }
+    public ApiConflictException(Throwable ex, String... traits) {
+        super(CONFLICT, ex, traits);
+    }
 
-  /*default*/ ApiConflictException(FineMessage richMessage) {
-    super(CONFLICT, richMessage);
-  }
+    public ApiConflictException(String message, Throwable ex, String... traits) {
+        super(CONFLICT, message, ex, traits);
+    }
 
-  /*default*/ ApiConflictException(FineMessage richMessage, Throwable ex) {
-    super(CONFLICT, richMessage, ex);
-  }
+    public ApiConflictException(FineMessage richMessage) {
+        super(CONFLICT, richMessage);
+    }
 
-  /*default*/ ApiConflictException(FineMessageSet messageSet) {
-    super(CONFLICT, messageSet);
-  }
+    public ApiConflictException(FineMessage richMessage, Throwable ex) {
+        super(CONFLICT, richMessage, ex);
+    }
 
-  /*default*/ ApiConflictException(FineMessageSet messageSet, Throwable ex) {
-    super(CONFLICT, messageSet, ex);
-  }
+    public ApiConflictException(FineMessageSet messageSet) {
+        super(CONFLICT, messageSet);
+    }
+
+    public ApiConflictException(FineMessageSet messageSet, Throwable ex) {
+        super(CONFLICT, messageSet, ex);
+    }
 }

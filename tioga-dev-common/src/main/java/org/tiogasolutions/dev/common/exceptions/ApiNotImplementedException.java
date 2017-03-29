@@ -7,37 +7,41 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.NOT_IMPLEMENTED;
 
 public class ApiNotImplementedException extends Api5xxException {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /*default*/ ApiNotImplementedException() {
-    super(NOT_IMPLEMENTED);
-  }
+    public ApiNotImplementedException() {
+        super(NOT_IMPLEMENTED);
+    }
 
-  /*default*/ ApiNotImplementedException(String message, String... traits) {
-    super(NOT_IMPLEMENTED, message, traits);
-  }
+    public ApiNotImplementedException(String message) {
+        super(NOT_IMPLEMENTED, message);
+    }
 
-  /*default*/ ApiNotImplementedException(Throwable ex, String... traits) {
-    super(NOT_IMPLEMENTED, ex, traits);
-  }
+    public ApiNotImplementedException(String message, String... traits) {
+        super(NOT_IMPLEMENTED, message, traits);
+    }
 
-  /*default*/ ApiNotImplementedException(String message, Throwable ex, String... traits) {
-    super(NOT_IMPLEMENTED, message, ex, traits);
-  }
+    public ApiNotImplementedException(Throwable ex, String... traits) {
+        super(NOT_IMPLEMENTED, ex, traits);
+    }
 
-  /*default*/ ApiNotImplementedException(FineMessage richMessage) {
-    super(NOT_IMPLEMENTED, richMessage);
-  }
+    public ApiNotImplementedException(String message, Throwable ex, String... traits) {
+        super(NOT_IMPLEMENTED, message, ex, traits);
+    }
 
-  /*default*/ ApiNotImplementedException(FineMessage richMessage, Throwable ex) {
-    super(NOT_IMPLEMENTED, richMessage, ex);
-  }
+    public ApiNotImplementedException(FineMessage richMessage) {
+        super(NOT_IMPLEMENTED, richMessage);
+    }
 
-  /*default*/ ApiNotImplementedException(FineMessageSet messageSet) {
-    super(NOT_IMPLEMENTED, messageSet);
-  }
+    public ApiNotImplementedException(FineMessage richMessage, Throwable ex) {
+        super(NOT_IMPLEMENTED, richMessage, ex);
+    }
 
-  /*default*/ ApiNotImplementedException(FineMessageSet messageSet, Throwable ex) {
-    super(NOT_IMPLEMENTED, messageSet, ex);
-  }
+    public ApiNotImplementedException(FineMessageSet messageSet) {
+        super(NOT_IMPLEMENTED, messageSet);
+    }
+
+    public ApiNotImplementedException(FineMessageSet messageSet, Throwable ex) {
+        super(NOT_IMPLEMENTED, messageSet, ex);
+    }
 }

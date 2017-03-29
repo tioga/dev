@@ -145,4 +145,80 @@ public class ExceptionUtilsTest {
             assertEquals(e.getMessage(), "The value \"whatever\" is an empty string.");
         }
     }
+
+    public void testAssertNotNull() {
+
+        ExceptionUtils.assertNotNull("something", "whatever", ApiNotFoundException.class);
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiBadRequestException.class);
+        } catch (ApiBadRequestException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiUnauthorizedException.class);
+        } catch (ApiUnauthorizedException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiForbiddenException.class);
+        } catch (ApiForbiddenException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiNotFoundException.class);
+        } catch (ApiNotFoundException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiConflictException.class);
+        } catch (ApiConflictException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiPreconditionFailedException.class);
+        } catch (ApiPreconditionFailedException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiImATeapotException.class);
+        } catch (ApiImATeapotException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiInternalServerErrorException.class);
+        } catch (ApiInternalServerErrorException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiNotImplementedException.class);
+        } catch (ApiNotImplementedException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+
+        try {
+            ExceptionUtils.assertNotNull(null, "whatever", ApiServiceUnavailableException.class);
+        } catch (ApiServiceUnavailableException e) {
+            assertEquals(e.getMessage(), "The value \"whatever\" cannot be null.");
+        }
+
+    }
 }

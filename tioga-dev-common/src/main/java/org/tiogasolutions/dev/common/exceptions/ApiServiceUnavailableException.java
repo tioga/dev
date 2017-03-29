@@ -8,37 +8,41 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.SERVICE_UNAVAILAB
 
 public class ApiServiceUnavailableException extends Api5xxException {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /*default*/ ApiServiceUnavailableException() {
-    super(SERVICE_UNAVAILABLE);
-  }
+    public ApiServiceUnavailableException() {
+        super(SERVICE_UNAVAILABLE);
+    }
 
-  /*default*/ ApiServiceUnavailableException(String message, String... traits) {
-    super(SERVICE_UNAVAILABLE, message, traits);
-  }
+    public ApiServiceUnavailableException(String message) {
+        super(SERVICE_UNAVAILABLE, message);
+    }
 
-  /*default*/ ApiServiceUnavailableException(Throwable ex, String... traits) {
-    super(INTERNAL_SERVER_ERROR, ex, traits);
-  }
+    public ApiServiceUnavailableException(String message, String... traits) {
+        super(SERVICE_UNAVAILABLE, message, traits);
+    }
 
-  /*default*/ ApiServiceUnavailableException(String message, Throwable ex, String... traits) {
-    super(SERVICE_UNAVAILABLE, message, ex, traits);
-  }
+    public ApiServiceUnavailableException(Throwable ex, String... traits) {
+        super(INTERNAL_SERVER_ERROR, ex, traits);
+    }
 
-  /*default*/ ApiServiceUnavailableException(FineMessage richMessage) {
-    super(SERVICE_UNAVAILABLE, richMessage);
-  }
+    public ApiServiceUnavailableException(String message, Throwable ex, String... traits) {
+        super(SERVICE_UNAVAILABLE, message, ex, traits);
+    }
 
-  /*default*/ ApiServiceUnavailableException(FineMessage richMessage, Throwable ex) {
-    super(SERVICE_UNAVAILABLE, richMessage, ex);
-  }
+    public ApiServiceUnavailableException(FineMessage richMessage) {
+        super(SERVICE_UNAVAILABLE, richMessage);
+    }
 
-  /*default*/ ApiServiceUnavailableException(FineMessageSet messageSet) {
-    super(SERVICE_UNAVAILABLE, messageSet);
-  }
+    public ApiServiceUnavailableException(FineMessage richMessage, Throwable ex) {
+        super(SERVICE_UNAVAILABLE, richMessage, ex);
+    }
 
-  /*default*/ ApiServiceUnavailableException(FineMessageSet messageSet, Throwable ex) {
-    super(SERVICE_UNAVAILABLE, messageSet, ex);
-  }
+    public ApiServiceUnavailableException(FineMessageSet messageSet) {
+        super(SERVICE_UNAVAILABLE, messageSet);
+    }
+
+    public ApiServiceUnavailableException(FineMessageSet messageSet, Throwable ex) {
+        super(SERVICE_UNAVAILABLE, messageSet, ex);
+    }
 }

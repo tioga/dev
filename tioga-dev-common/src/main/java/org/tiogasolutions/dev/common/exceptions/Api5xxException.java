@@ -8,35 +8,35 @@ public class Api5xxException extends ApiException {
 
   private static final long serialVersionUID = 1L;
 
-  /*default*/ Api5xxException(HttpStatusCode httpStatusCode) {
+  public Api5xxException(HttpStatusCode httpStatusCode) {
     super(assert500(httpStatusCode));
   }
 
-  /*default*/ Api5xxException(HttpStatusCode httpStatusCode, String message, String... traits) {
+  public Api5xxException(HttpStatusCode httpStatusCode, String message, String... traits) {
     super(assert500(httpStatusCode), message, traits);
   }
 
-  /*default*/ Api5xxException(HttpStatusCode httpStatusCode, Throwable ex, String... traits) {
+  public Api5xxException(HttpStatusCode httpStatusCode, Throwable ex, String... traits) {
     super(assert500(httpStatusCode), ex, traits);
   }
 
-  /*default*/ Api5xxException(HttpStatusCode httpStatusCode, String message, Throwable ex, String... traits) {
+  public Api5xxException(HttpStatusCode httpStatusCode, String message, Throwable ex, String... traits) {
     super(assert500(httpStatusCode), message, ex, traits);
   }
 
-  /*default*/ Api5xxException(HttpStatusCode httpStatusCode, FineMessage richMessage) {
+  public Api5xxException(HttpStatusCode httpStatusCode, FineMessage richMessage) {
     super(assert500(httpStatusCode), richMessage);
   }
 
-  /*default*/ Api5xxException(HttpStatusCode httpStatusCode, FineMessage richMessage, Throwable ex) {
+  public Api5xxException(HttpStatusCode httpStatusCode, FineMessage richMessage, Throwable ex) {
     super(assert500(httpStatusCode), richMessage, ex);
   }
 
-  /*default*/ Api5xxException(HttpStatusCode httpStatusCode, FineMessageSet messageSet) {
+  public Api5xxException(HttpStatusCode httpStatusCode, FineMessageSet messageSet) {
     super(assert500(httpStatusCode), messageSet);
   }
 
-  /*default*/ Api5xxException(HttpStatusCode httpStatusCode, FineMessageSet messageSet, Throwable ex) {
+  public Api5xxException(HttpStatusCode httpStatusCode, FineMessageSet messageSet, Throwable ex) {
     super(assert500(httpStatusCode), messageSet, ex);
   }
 

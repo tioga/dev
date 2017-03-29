@@ -7,37 +7,41 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.INTERNAL_SERVER_E
 
 public class ApiInternalServerErrorException extends Api5xxException {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /*default*/ ApiInternalServerErrorException() {
-    super(INTERNAL_SERVER_ERROR);
-  }
+    public ApiInternalServerErrorException() {
+        super(INTERNAL_SERVER_ERROR);
+    }
 
-  /*default*/ ApiInternalServerErrorException(String message, String... traits) {
-    super(INTERNAL_SERVER_ERROR, message, traits);
-  }
+    public ApiInternalServerErrorException(String message) {
+        super(INTERNAL_SERVER_ERROR, message);
+    }
 
-  /*default*/ ApiInternalServerErrorException(Throwable ex, String... traits) {
-    super(INTERNAL_SERVER_ERROR, ex, traits);
-  }
+    public ApiInternalServerErrorException(String message, String... traits) {
+        super(INTERNAL_SERVER_ERROR, message, traits);
+    }
 
-  /*default*/ ApiInternalServerErrorException(String message, Throwable ex, String... traits) {
-    super(INTERNAL_SERVER_ERROR, message, ex, traits);
-  }
+    public ApiInternalServerErrorException(Throwable ex, String... traits) {
+        super(INTERNAL_SERVER_ERROR, ex, traits);
+    }
 
-  /*default*/ ApiInternalServerErrorException(FineMessage richMessage) {
-    super(INTERNAL_SERVER_ERROR, richMessage);
-  }
+    public ApiInternalServerErrorException(String message, Throwable ex, String... traits) {
+        super(INTERNAL_SERVER_ERROR, message, ex, traits);
+    }
 
-  /*default*/ ApiInternalServerErrorException(FineMessage richMessage, Throwable ex) {
-    super(INTERNAL_SERVER_ERROR, richMessage, ex);
-  }
+    public ApiInternalServerErrorException(FineMessage richMessage) {
+        super(INTERNAL_SERVER_ERROR, richMessage);
+    }
 
-  /*default*/ ApiInternalServerErrorException(FineMessageSet messageSet) {
-    super(INTERNAL_SERVER_ERROR, messageSet);
-  }
+    public ApiInternalServerErrorException(FineMessage richMessage, Throwable ex) {
+        super(INTERNAL_SERVER_ERROR, richMessage, ex);
+    }
 
-  /*default*/ ApiInternalServerErrorException(FineMessageSet messageSet, Throwable ex) {
-    super(INTERNAL_SERVER_ERROR, messageSet, ex);
-  }
+    public ApiInternalServerErrorException(FineMessageSet messageSet) {
+        super(INTERNAL_SERVER_ERROR, messageSet);
+    }
+
+    public ApiInternalServerErrorException(FineMessageSet messageSet, Throwable ex) {
+        super(INTERNAL_SERVER_ERROR, messageSet, ex);
+    }
 }

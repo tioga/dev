@@ -7,37 +7,41 @@ import static org.tiogasolutions.dev.common.net.HttpStatusCode.FORBIDDEN;
 
 public class ApiForbiddenException extends Api4xxException {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /*default*/ ApiForbiddenException() {
-    super(FORBIDDEN);
-  }
+    public ApiForbiddenException() {
+        super(FORBIDDEN);
+    }
 
-  /*default*/ ApiForbiddenException(String message, String... traits) {
-    super(FORBIDDEN, message, traits);
-  }
+    public ApiForbiddenException(String message) {
+        super(FORBIDDEN, message);
+    }
 
-  /*default*/ ApiForbiddenException(Throwable ex, String... traits) {
-    super(FORBIDDEN, ex, traits);
-  }
+    public ApiForbiddenException(String message, String... traits) {
+        super(FORBIDDEN, message, traits);
+    }
 
-  /*default*/ ApiForbiddenException(String message, Throwable ex, String... traits) {
-    super(FORBIDDEN, message, ex, traits);
-  }
+    public ApiForbiddenException(Throwable ex, String... traits) {
+        super(FORBIDDEN, ex, traits);
+    }
 
-  /*default*/ ApiForbiddenException(FineMessage richMessage) {
-    super(FORBIDDEN, richMessage);
-  }
+    public ApiForbiddenException(String message, Throwable ex, String... traits) {
+        super(FORBIDDEN, message, ex, traits);
+    }
 
-  /*default*/ ApiForbiddenException(FineMessage richMessage, Throwable ex) {
-    super(FORBIDDEN, richMessage, ex);
-  }
+    public ApiForbiddenException(FineMessage richMessage) {
+        super(FORBIDDEN, richMessage);
+    }
 
-  /*default*/ ApiForbiddenException(FineMessageSet messageSet) {
-    super(FORBIDDEN, messageSet);
-  }
+    public ApiForbiddenException(FineMessage richMessage, Throwable ex) {
+        super(FORBIDDEN, richMessage, ex);
+    }
 
-  /*default*/ ApiForbiddenException(FineMessageSet messageSet, Throwable ex) {
-    super(FORBIDDEN, messageSet, ex);
-  }
+    public ApiForbiddenException(FineMessageSet messageSet) {
+        super(FORBIDDEN, messageSet);
+    }
+
+    public ApiForbiddenException(FineMessageSet messageSet, Throwable ex) {
+        super(FORBIDDEN, messageSet, ex);
+    }
 }
