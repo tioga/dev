@@ -15,7 +15,7 @@
  */
 
 project(':tioga-dev-testing') {
-    version = "4.2.6"
+    version = "4.2.7"
 
     dependencies {
         compile project(":tioga-dev-domain")
